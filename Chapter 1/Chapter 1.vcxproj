@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B747EBA3-FD6C-4E3E-A3A6-A981521C2022}</ProjectGuid>
-    <RootNamespace>CforCProgrammers</RootNamespace>
+    <ProjectGuid>{E94D87C4-924E-4861-956B-9F167DD0FAB6}</ProjectGuid>
+    <RootNamespace>Chapter1</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -110,7 +110,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EnumOverloading.cpp" />
+    <ClCompile Include="..\Ch1\base.cpp" />
+    <ClCompile Include="..\Ch1\ch1-ex2.cpp" />
+    <ClCompile Include="..\Ch1\complex1.cpp" />
+    <ClCompile Include="..\Ch1\complex2.cpp" />
+    <ClCompile Include="..\Ch1\complex3.cpp" />
+    <ClCompile Include="..\Ch1\hello.c" />
+    <ClCompile Include="..\Ch1\hello1.cpp" />
+    <ClCompile Include="..\Ch1\hello2.cpp" />
+    <ClCompile Include="..\Ch1\hello3.cpp" />
+    <ClCompile Include="..\Ch1\student1.cpp" />
+    <ClCompile Include="..\Ch1\temp.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
