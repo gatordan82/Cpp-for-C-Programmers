@@ -6,15 +6,15 @@ inline int sum(std::vector<int>& v)
 {
 	int sum{ 0 };
 
-	for (int i = 0; i < v.size; ++i)
-		sum += v[i];
+	for (const auto& e : v)
+		sum += e;
 
 	return sum;
 }
 
 int main()
 {
-	const int N = 40;
+	const int N{ 40 };
 
 	std::vector<int> d;
 
