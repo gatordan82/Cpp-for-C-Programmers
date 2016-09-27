@@ -1,10 +1,12 @@
 #include <iostream>
 #include <vector>
 
-// sum() returns the sum of all elements in the vector
-inline int sum(std::vector<int>& v)
+// sum() returns the sum of all elements in a generic vector,
+// with arguments that are summable
+template <class Summable>
+inline Summable sum(std::vector<Summable>& v)
 {
-	int sum{ 0 };
+	Summable sum{ 0 };
 
 	for (const auto& e : v)
 		sum += e;
