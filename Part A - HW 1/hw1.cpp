@@ -1,3 +1,8 @@
+// Computes the sum of values in a vector (resizing array)
+//
+// Dan Benjamin
+// 9/27/2016
+
 #include <iostream>
 #include <vector>
 
