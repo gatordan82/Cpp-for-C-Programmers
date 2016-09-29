@@ -1,12 +1,15 @@
-// Computes the sum of values in a vector (resizing array)
+// C++ for C Programmers, Part A
+// Homework 1: Convert a C program to C++
 //
-// Dan Benjamin
+// Program computes the sum of values in a vector (resizing array)
+//
+// Daniel K. Benjamin
 // 9/27/2016
 
 #include <iostream>
 #include <vector>
 
-// sum() returns the sum of all elements in a generic vector,
+// sum() returns the sum of all elements in a generic vector v,
 // with arguments that are summable
 template <class Summable>
 inline Summable sum(std::vector<Summable>& v)
@@ -30,8 +33,6 @@ int main()
 		d.push_back(i);
 
 	std::cout << "sum is " << sum(d) << std::endl;
-
-	std::cin.get();
 
 	return 0;
 }
