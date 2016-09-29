@@ -10,7 +10,7 @@ const int sides{ 6 };  // replaces many sharp defines
 
 int main()
 {
-	const int n_dice{ 10 };
+	const int n_dice{ 2 };
 
 	uniform_int_distribution<unsigned> u(1, sides);
 	default_random_engine e(time(0));
@@ -20,10 +20,10 @@ int main()
 	int trials;
 	cin >> trials;
 
-	int* outcomes = new int[n_dice * sides + 1];
+	int* outcomes = new int[n_dice * sides + 1]();
 
 	for (int j = 0; j < trials; ++j)
-		outcomes[j] = u(e) + u(e);
+		outcomes[u(e) + u(e)]++;
 
 	cout << "probability\n";
 
