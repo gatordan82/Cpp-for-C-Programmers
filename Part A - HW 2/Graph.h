@@ -1,22 +1,25 @@
 #ifndef _HW2_GRAPH_H
 #define _HW2_GRAPH_H
 
+#include "Edge.h"
+#include "Bag.h"
 #include <vector>
-
+#include <array>
 
 class Graph
 {
 private:
-	int numVertices;
-	int numEdges;
-	std::vector<std::vector<double>> adjMatrix;
+	size_t _vertices;
+	size_t _edges;
+	std::vector<Bag<Edge<double>>> _edgeList;
 
 public:
 	// Constructors
 	Graph();
-	explicit Graph(int _numVertices);
-	explicit Graph(std::vector<std::vector<double>> _adjMatrix);
-	explicit Graph(const Graph& g);
+	explicit Graph(size_t vertices);
+	Graph(std::vector<Bag<Edge<double>>> edgeList);
+	Graph(size_t vertices, double density, std::array<double, 2> distanceRange);
+	Graph(const Graph& g);
 	
 	// Destructor
 	virtual ~Graph();
@@ -29,11 +32,13 @@ public:
 	int E() const;
 	bool areAdjacent(int x, int y) const;
 	std::vector<int> neighbors(int x) const;
+	int degree(int x) const;
 	void addEdge(int x, int y, double edgeValue);
 	void deleteEdge(int x, int y);
 	double getEdgeValue(int x) const;
 	void setEdgeValue(int x, int y, double edgeValue);
 
+	std::string toString() const;
 
 };
 

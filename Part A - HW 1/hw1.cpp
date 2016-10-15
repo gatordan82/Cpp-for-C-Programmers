@@ -24,7 +24,7 @@ inline Summable sum(std::vector<Summable>& v)
 
 int main()
 {
-	const int N{ 40 };
+	const int N {40};
 
 	std::vector<int> d;
 

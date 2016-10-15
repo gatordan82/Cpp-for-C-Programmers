@@ -110,10 +110,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bag.h" />
     <ClInclude Include="Graph.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Edge.h" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="RandomShortestPath.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

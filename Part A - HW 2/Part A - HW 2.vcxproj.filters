@@ -15,13 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Graph.cpp">
+    <ClCompile Include="Edge.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomShortestPath.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
