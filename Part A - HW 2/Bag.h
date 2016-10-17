@@ -20,6 +20,7 @@ public:
 	bool isEmpty() const;
 	size_t size() const;
 	void add(Item it);
+	void remove(Item it);
 
 	typename std::forward_list<Item>::const_iterator begin() const;
 	typename std::forward_list<Item>::const_iterator end() const;
@@ -75,6 +76,12 @@ template<class Item>
 inline void Bag<Item>::add(Item it)
 {
 	_list.push_front(it);
+}
+
+template<class Item>
+inline void Bag<Item>::remove(Item it)
+{
+	_list.remove_if(== it);
 }
 
 template<class Item>

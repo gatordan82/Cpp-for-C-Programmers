@@ -14,20 +14,20 @@ private:
 
 public:
 	Edge();
-	explicit Edge(int v);
-	Edge(int v, int w);
-	Edge(int v, int w, Weight weight);
+	explicit Edge(size_t v);
+	Edge(size_t v, size_t w);
+	Edge(size_t v, size_t w, Weight weight);
 	Edge(const Edge<Weight>& e);
 
 	virtual ~Edge();
 
 	Edge<Weight>& operator=(const Edge<Weight>& e);
 
-	Weight weight();
-	int either();
-	int other();
+	Weight weight() const;
+	size_t first() const;
+	size_t second() const;
 
-	bool operator<(Edge e);
+	bool operator<(Edge e) const;
 	std::string toString() const;
 };
 
@@ -45,7 +45,7 @@ inline Edge<Weight>::Edge()
 }
 
 template<class Weight>
-inline Edge<Weight>::Edge(int v)
+inline Edge<Weight>::Edge(size_t v)
 	: _first{ v },
 	_second{ 0 },
 	_weight{ 0.0 }
@@ -53,7 +53,7 @@ inline Edge<Weight>::Edge(int v)
 }
 
 template<class Weight>
-inline Edge<Weight>::Edge(int v, int w)
+inline Edge<Weight>::Edge(size_t v, size_t w)
 	: _first{ v },
 	_second{ w },
 	_weight{ 0.0 }
@@ -61,7 +61,7 @@ inline Edge<Weight>::Edge(int v, int w)
 }
 
 template<class Weight>
-inline Edge<Weight>::Edge(int v, int w, Weight weight)
+inline Edge<Weight>::Edge(size_t v, size_t w, Weight weight)
 	: _first{ v },
 	_second{ w },
 	_weight{ weight }
@@ -95,25 +95,25 @@ inline Edge<Weight>& Edge<Weight>::operator=(const Edge<Weight>& e)
 }
 
 template<class Weight>
-inline Weight Edge<Weight>::weight()
+inline Weight Edge<Weight>::weight() const
 {
 	return _weight;
 }
 
 template<class Weight>
-inline int Edge<Weight>::either()
+inline int Edge<Weight>::first() const
 {
 	return _first;
 }
 
 template<class Weight>
-inline int Edge<Weight>::other()
+inline int Edge<Weight>::second() const
 {
 	return _second;
 }
 
 template<class Weight>
-inline bool Edge<Weight>::operator<(Edge e)
+inline bool Edge<Weight>::operator<(Edge e) const
 {
 	return (_weight < e._weight);
 }

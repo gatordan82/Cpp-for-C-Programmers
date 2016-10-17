@@ -28,14 +28,14 @@ public:
 	Graph& operator=(const Graph& g);
 
 	// Graph API methods
-	int V() const;
-	int E() const;
+	size_t V() const;
+	size_t E() const;
 	bool areAdjacent(int x, int y) const;
 	std::vector<int> neighbors(int x) const;
 	int degree(int x) const;
 	void addEdge(int x, int y, double edgeValue);
 	void deleteEdge(int x, int y);
-	double getEdgeValue(int x) const;
+	double getEdgeValue(int x, int y) const;
 	void setEdgeValue(int x, int y, double edgeValue);
 
 	std::string toString() const;
