@@ -15,7 +15,7 @@ private:
 
 public:
 	PriorityQueue();
-	PriorityQueue(const PriorityQueue<Comprable>& pq);
+	PriorityQueue(const PriorityQueue<Comparable>& pq);
 
 	~PriorityQueue();
 

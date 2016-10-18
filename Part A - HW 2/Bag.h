@@ -81,7 +81,7 @@ inline void Bag<Item>::add(Item it)
 template<class Item>
 inline void Bag<Item>::remove(Item it)
 {
-	_list.remove_if(== it);
+	_list.remove(it);
 }
 
 template<class Item>

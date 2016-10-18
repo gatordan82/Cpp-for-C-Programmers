@@ -17,6 +17,13 @@ int main()
 	for (const auto x : test)
 		cout << x << endl;
 
+	cout << "\nRemoved item: 10" << endl;
+	int z = 10;
+	test.remove(z);
+
+	for (const auto x : test)
+		cout << x << endl;
+
 	Edge<double> e1(1, 2, 2.0);
 	Edge<double> e2(2, 0, 1.0);
 	Edge<double> e3(2, 1, 2.0);
