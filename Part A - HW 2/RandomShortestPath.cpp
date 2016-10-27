@@ -39,7 +39,7 @@ int main()
 	for (const auto& e : edgeList)
 		cout << e.toString() << endl;
 
-	std::sort(edgeList.begin(), edgeList.end());
+	sort(edgeList.begin(), edgeList.end());
 	
 	cout << "\nEdges after sorting: " << endl;
 	for (const auto& e : edgeList)
