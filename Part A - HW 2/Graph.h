@@ -5,13 +5,15 @@
 #include "Bag.h"
 #include <vector>
 #include <array>
+#include <algorithm>
 
 class Graph
 {
 private:
 	size_t _vertices;
 	size_t _edges;
-	std::vector<Bag<Edge<double>>> _edgeList;
+	std::vector<Bag<Edge<double>>> _edgeLists;
+	std::vector<double> _vertexValues;
 
 public:
 	// Constructors
@@ -31,8 +33,8 @@ public:
 	size_t V() const;
 	size_t E() const;
 	bool areAdjacent(int x, int y) const;
-	std::vector<int> neighbors(int x) const;
-	int degree(int x) const;
+	Bag<Edge<double>> neighbors(int x) const;
+	size_t degree(int x) const;
 	void addEdge(int x, int y, double edgeValue);
 	void deleteEdge(int x, int y);
 	double getEdgeValue(int x, int y) const;

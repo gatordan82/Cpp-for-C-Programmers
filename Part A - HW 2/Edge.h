@@ -8,8 +8,8 @@ template <class Weight>
 class Edge
 {
 private:
-	int _first;
-	int _second;
+	size_t _first;
+	size_t _second;
 	Weight _weight;
 
 public:
@@ -24,10 +24,14 @@ public:
 	Edge<Weight>& operator=(const Edge<Weight>& e);
 
 	Weight weight() const;
+	void changeWeight(Weight w);
+
 	size_t first() const;
 	size_t second() const;
 
-	bool operator<(Edge e) const;
+	bool operator<(const Edge<Weight>& e) const;
+	bool operator>(const Edge<Weight>& e) const;
+	bool operator==(const Edge<Weight>& e) const;
 	std::string toString() const;
 };
 
@@ -101,21 +105,41 @@ inline Weight Edge<Weight>::weight() const
 }
 
 template<class Weight>
-inline int Edge<Weight>::first() const
+inline void Edge<Weight>::changeWeight(Weight w)
+{
+	_weight = w;
+}
+
+template<class Weight>
+inline size_t Edge<Weight>::first() const
 {
 	return _first;
 }
 
 template<class Weight>
-inline int Edge<Weight>::second() const
+inline size_t Edge<Weight>::second() const
 {
 	return _second;
 }
 
 template<class Weight>
-inline bool Edge<Weight>::operator<(Edge e) const
+inline bool Edge<Weight>::operator<(const Edge<Weight>& e) const
 {
 	return (_weight < e._weight);
+}
+
+template<class Weight>
+inline bool Edge<Weight>::operator>(const Edge<Weight>& e) const
+{
+	return (_weight > e._weight);
+}
+
+template<class Weight>
+inline bool Edge<Weight>::operator==(const Edge<Weight>& e) const
+{
+	return (_first == e._first) 
+		&& (_second == e._second) 
+		&& (_weight == e._weight);
 }
 
 
