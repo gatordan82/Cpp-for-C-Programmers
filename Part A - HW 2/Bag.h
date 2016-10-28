@@ -31,9 +31,8 @@ public:
 
 template<class Item>
 inline Bag<Item>::Bag()
-	: _N{ 0 }
+	: _N{ 0 }, _list{ std::forward_list<Item>() } 
 {
-	std::forward_list<Item> list;
 }
 
 template<class Item>
