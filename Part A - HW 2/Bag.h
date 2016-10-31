@@ -26,7 +26,7 @@ public:
 	typename std::forward_list<Item>::const_iterator end() const;
 };
 
-#endif // !_BAG_H
+
 
 
 template<class Item>
@@ -75,6 +75,7 @@ template<class Item>
 inline void Bag<Item>::add(Item it)
 {
 	_list.push_front(it);
+	++_N;
 }
 
 template<class Item>
@@ -94,3 +95,5 @@ typename std::forward_list<Item>::const_iterator Bag<Item>::end() const
 {
 	return _list.end();
 }
+
+#endif // !_BAG_H

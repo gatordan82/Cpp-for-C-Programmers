@@ -2,24 +2,25 @@
 #include <ctime>
 #include <random>
 
+using namespace std;
 
 Graph::Graph()
 	: _vertices{ 0 },
-	_edges{ 0 }
+	_edges{ 0 }, 
+	_edgeLists{ vector<Bag<Edge<double>>>() },
+	_vertexValues{ vector<double>() }
 {
-	std::vector<Bag<Edge<double>>> _edgeLists{};
-	std::vector<double> _vertexValues{};
 }
 
 Graph::Graph(size_t vertices)
 	: _vertices{ vertices },
-	_edges{ 0 }
+	_edges{ 0 },
+	_edgeLists{ vector<Bag<Edge<double>>>(vertices, Bag<Edge<double>>()) },
+	_vertexValues{ vector<double>(vertices, 0.0) }
 {
-	std::vector<Bag<Edge<double>>> _edgeLists(_vertices, Bag<Edge<double>>());
-	std::vector<double> _vertexValues{};
 }
 
-Graph::Graph(std::vector<Bag<Edge<double>>> edgeLists)
+Graph::Graph(vector<Bag<Edge<double>>> edgeLists)
 	: _vertices{ edgeLists.size() },
 	_edgeLists{ edgeLists }
 {
@@ -29,15 +30,18 @@ Graph::Graph(std::vector<Bag<Edge<double>>> edgeLists)
 	
 	_edges /= 2;
 
-	std::vector<double> _vertexValues{};
+	vector<double> _vertexValues();
 }
 
-Graph::Graph(size_t vertices, double density, std::array<double, 2> distanceRange)
-	: _vertices{ vertices }
+Graph::Graph(size_t vertices, double density, array<double, 2> distanceRange)
+	: _vertices{ vertices },
+	_edges{ 0 },
+	_edgeLists{ vector<Bag<Edge<double>>>(_vertices, Bag<Edge<double>>()) },
+	_vertexValues{ vector<double>(vertices, 0.0) }
 {
-	std::uniform_real_distribution<double> prob(0, 1);
-	std::uniform_real_distribution<double> value(distanceRange[0], distanceRange[1]);
-	std::default_random_engine e(time(0));
+	uniform_real_distribution<double> prob(0, 1);
+	uniform_real_distribution<double> value(distanceRange[0], distanceRange[1]);
+	default_random_engine e(time(0));
 
 	for (int i = 0; i < _vertices; ++i)
 		for (int j = 0; j <= i; ++j)
@@ -66,6 +70,7 @@ Graph& Graph::operator=(const Graph& g)
 		_vertices = g._vertices;
 		_edges = g._edges;
 		_edgeLists = g._edgeLists;
+		_vertexValues = g._vertexValues;
 	}
 
 	return *this;
@@ -83,10 +88,8 @@ size_t Graph::E() const
 
 bool Graph::areAdjacent(int x, int y) const
 {
-	Bag<Edge<double>> xList = _edgeLists[x];
-	for (const auto& e : xList)
-		if (e.second() == y)
-			return true;
+	for (const auto& e : _edgeLists[x])
+		if (e.second() == y) return true;
 
 	return false;
 }
@@ -103,43 +106,44 @@ size_t Graph::degree(int x) const
 
 void Graph::addEdge(int x, int y, double edgeValue)
 {
+	++_edges;
 	_edgeLists[x].add(Edge<double>(x, y, edgeValue));
 	_edgeLists[y].add(Edge<double>(y, x, edgeValue));
 }
 
 void Graph::deleteEdge(int x, int y)
 {
-	Bag<Edge<double>> xList = _edgeLists[x];
-	Bag<Edge<double>> yList = _edgeLists[y];
+	Bag<Edge<double>>& xList = _edgeLists[x];
+	for (auto& e : _edgeLists[x])
+		if (e.second() == y) xList.remove(e);
 
-	for (auto& e : xList)
-	{
-		if (e.second() == y)
-			xList.remove(e);
-	}
-
+	Bag<Edge<double>>& yList = _edgeLists[y];
 	for (auto& e : yList)
-	{
-		if (e.second() == x)
-			yList.remove(e);
-	}
+		if (e.second() == x) yList.remove(e);
 }
 
 double Graph::getEdgeValue(int x, int y) const
 {
 	if (areAdjacent(x, y))
 	{
-		Bag<Edge<double>> vertexList = _edgeLists[x];
-		for (const auto& e : vertexList)
-		{
-			if (e.second() == y)
-				return e.weight();
-		}
+		for (const auto& e : _edgeLists[x])
+			if (e.second() == y) return e.weight();
 	}
 }
 
+// TODO: fix this function
 void Graph::setEdgeValue(int x, int y, double edgeValue)
 {
 	Bag<Edge<double>> xList = _edgeLists[x];
+}
 
+string Graph::toString() const
+{
+	string graphString("");
+
+	for (const auto& b : _edgeLists)
+		for (const auto& e : b)
+			graphString += (e.toString() + "\n");
+
+	return graphString;
 }

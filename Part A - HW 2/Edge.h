@@ -8,59 +8,59 @@ template <class Weight>
 class Edge
 {
 private:
-	size_t _first;
-	size_t _second;
-	Weight _weight;
+	size_t _first;		
+	size_t _second;		
+	Weight _weight;		
 
 public:
+	// constructors
 	Edge();
 	explicit Edge(size_t v);
 	Edge(size_t v, size_t w);
 	Edge(size_t v, size_t w, Weight weight);
 	Edge(const Edge<Weight>& e);
 
+	// destructor
 	virtual ~Edge();
 
+	// copy assignment
 	Edge<Weight>& operator=(const Edge<Weight>& e);
 
+	// accessors & mutators
 	Weight weight() const;
 	void changeWeight(Weight w);
-
 	size_t first() const;
 	size_t second() const;
-
+	
+	// comparators
 	bool operator<(const Edge<Weight>& e) const;
 	bool operator>(const Edge<Weight>& e) const;
 	bool operator==(const Edge<Weight>& e) const;
+
+	//
 	std::string toString() const;
 };
 
 
-#endif // !_EDGE_H
+
 
 
 
 template<class Weight>
 inline Edge<Weight>::Edge()
-	: _first{ 0 },
-	_second{ 0 },
-	_weight{ 0.0 }
+	: Edge(0, 0, 0.0)
 {
 }
 
 template<class Weight>
 inline Edge<Weight>::Edge(size_t v)
-	: _first{ v },
-	_second{ 0 },
-	_weight{ 0.0 }
+	: Edge(v, 0, 0.0)
 {
 }
 
 template<class Weight>
 inline Edge<Weight>::Edge(size_t v, size_t w)
-	: _first{ v },
-	_second{ w },
-	_weight{ 0.0 }
+	: Edge(v, w, 0.0)
 {
 }
 
@@ -154,3 +154,4 @@ inline std::string Edge<Weight>::toString() const
 }
 
 
+#endif // !_EDGE_H

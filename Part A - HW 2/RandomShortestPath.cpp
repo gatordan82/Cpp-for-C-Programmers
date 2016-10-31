@@ -1,5 +1,6 @@
 #include "Bag.h"
 #include "Edge.h"
+#include "Graph.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -27,9 +28,16 @@ int main()
 	Edge<double> e1(1, 2, 2.0);
 	Edge<double> e2(2, 0, 1.0);
 	Edge<double> e3(2, 1, 2.0);
-	
-	cout << e1.toString() << endl;
-	cout << e2.toString() << endl;
+	Edge<double> e4(2, 1);
+	Edge<double> e5(1);
+	Edge<double> e6;
+
+	cout << "e1\t" << e1.toString() << endl;
+	cout << "e2\t" << e2.toString() << endl;
+	cout << "e3\t" << e3.toString() << endl;
+	cout << "e4\t" << e4.toString() << endl;
+	cout << "e5\t" << e5.toString() << endl;
+	cout << "e6\t" << e6.toString() << endl;
 
 	cout << "e1 < e2? " << (e1 < e2) << endl;
 
@@ -45,6 +53,12 @@ int main()
 	for (const auto& e : edgeList)
 		cout << e.toString() << endl;
 
+	cout << "\n" << endl;
+
+	std::array<double, 2> range{ 0.0, 10.0 };
+
+	Graph random(10, 0.2, range);
+	cout << random.toString() << endl;
 
 	cin.get();
 

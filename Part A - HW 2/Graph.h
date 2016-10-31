@@ -19,7 +19,7 @@ public:
 	// Constructors
 	Graph();
 	explicit Graph(size_t vertices);
-	Graph(std::vector<Bag<Edge<double>>> edgeList);
+	explicit Graph(std::vector<Bag<Edge<double>>> edgeList);
 	Graph(size_t vertices, double density, std::array<double, 2> distanceRange);
 	Graph(const Graph& g);
 	
