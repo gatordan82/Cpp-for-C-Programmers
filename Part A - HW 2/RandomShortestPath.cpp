@@ -4,26 +4,37 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 int main()
 {
-
 	using namespace std;
 
-	Bag<int> test;
-	test.add(5);
-	test.add(10);
-	test.add(11);
+	// Bag unit tests
+	Bag<int> b1{};
+	assert(b1.isEmpty());
+	assert(b1.size() == 0);
 
-	for (const auto x : test)
-		cout << x << endl;
+	b1.add(1);
+	assert(b1.size() == 1);
+	b1.add(5);
+	assert(b1.size() == 2);
+	//for (const auto& e : b1)
+	//	cout << e << endl;
 
-	cout << "\nRemoved item: 10" << endl;
-	int z = 10;
-	test.remove(z);
+	b1.remove(1);
+	assert(b1.size() == 1);
+	b1.remove(5);
+	assert(b1.size() == 0);
+	assert(b1.isEmpty());
 
-	for (const auto x : test)
-		cout << x << endl;
+	Bag<int> b2{};
+	size_t b2Size{ 20 };
+	for (int i = 0; i < b2Size; ++i)
+		b2.add(i);
+	assert(b2.size() == b2Size);
+	//for (const auto& e : b2)
+	//	cout << e << endl;
 
 	Edge<double> e1(1, 2, 2.0);
 	Edge<double> e2(2, 0, 1.0);

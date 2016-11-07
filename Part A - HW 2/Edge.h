@@ -32,18 +32,14 @@ public:
 	size_t first() const;
 	size_t second() const;
 	
-	// comparators
+	// Comparators: < and > for algorithms, == checks object equality
 	bool operator<(const Edge<Weight>& e) const;
 	bool operator>(const Edge<Weight>& e) const;
-	bool operator==(const Edge<Weight>& e) const;
+	bool operator==(const Edge<Weight>& e) const; 
 
-	//
+	// string representation
 	std::string toString() const;
 };
-
-
-
-
 
 
 template<class Weight>

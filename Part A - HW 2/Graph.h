@@ -15,6 +15,9 @@ private:
 	std::vector<Bag<Edge<double>>> _edgeLists;
 	std::vector<double> _vertexValues;
 
+	void validateVertex(int x) const;
+	void validateVertices(int x, int y) const;
+
 public:
 	// Constructors
 	Graph();
@@ -39,6 +42,8 @@ public:
 	void deleteEdge(int x, int y);
 	double getEdgeValue(int x, int y) const;
 	void setEdgeValue(int x, int y, double edgeValue);
+	double getVertexValue(int x) const;
+	void setVertexValue(int x, double vertexValue);
 
 	std::string toString() const;
 
