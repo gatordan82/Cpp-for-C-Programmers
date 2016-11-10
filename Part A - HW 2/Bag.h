@@ -2,6 +2,7 @@
 #define _BAG_H
 
 #include <forward_list>
+#include <initializer_list>
 
 template <class Item>
 class Bag
@@ -54,6 +55,7 @@ inline Bag<Item>::Bag(const Bag<Item>& b)
 	_list{ b._list }
 {
 }
+
 
 template<class Item>
 inline Bag<Item>::~Bag()

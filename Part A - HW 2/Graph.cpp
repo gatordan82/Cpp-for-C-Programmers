@@ -33,7 +33,7 @@ Graph::Graph()
 Graph::Graph(size_t vertices)
 	: _vertices{ vertices },
 	_edges{ 0 },
-	_edgeLists{ vector<Bag<Edge<double>>>{vertices, Bag<Edge<double>>{}} },
+	_edgeLists{ vector<Bag<Edge<double>>>(vertices, Bag<Edge<double>>{}) },
 	_vertexValues{ vector<double>(vertices, 0.0) }
 {
 }
@@ -53,7 +53,7 @@ Graph::Graph(vector<Bag<Edge<double>>> edgeLists)
 Graph::Graph(size_t vertices, double density, array<double, 2> distanceRange)
 	: _vertices{ vertices },
 	_edges{ 0 },
-	_edgeLists{ vector<Bag<Edge<double>>>(_vertices, Bag<Edge<double>>{}) },
+	_edgeLists{ vector<Bag<Edge<double>>>(vertices, Bag<Edge<double>>{}) },
 	_vertexValues{ vector<double>(vertices, 0.0) }
 {
 	uniform_real_distribution<double> prob(0, 1);
@@ -153,8 +153,8 @@ double Graph::getEdgeValue(int x, int y) const
 	if (areAdjacent(x, y))
 	{
 		auto& xList = _edgeLists[x];
-		auto xEdge = find(xList.begin(), xList.end(), y);
-		xEdge->weight();
+		for (auto& e : xList)
+			if (e.second() == y) return e.weight();
 	}
 	else throw invalid_argument{ "Vertices are not connected." };
 }
@@ -165,18 +165,18 @@ void Graph::setEdgeValue(int x, int y, double edgeValue)
 	if (areAdjacent(x, y))
 	{
 		auto& xList = _edgeLists[x];
-		auto xEdge = find(xList.begin(), xList.end(), y);
-		xEdge->changeWeight(edgeValue);
+		for (auto& e : xList)
+			if (e.second() == y) e.changeWeight(edgeValue);
 
 		auto& yList = _edgeLists[y];
-		auto yEdge = find(yList.begin(), yList.end(), x);
-		yEdge->changeWeight(edgeValue);
+		for (auto& e : yList)
+			if (e.second() == x) e.changeWeight(edgeValue);
 	}
 }
 
 double Graph::getVertexValue(int x) const
 {
-	validateVertices(x, 0);
+	validateVertex(x);
 	return _vertexValues[x];
 }
 
