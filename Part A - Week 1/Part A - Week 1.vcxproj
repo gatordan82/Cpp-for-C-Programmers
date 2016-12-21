@@ -112,6 +112,8 @@
   <ItemGroup>
     <ClCompile Include="CDiceProbability.cpp" />
     <ClCompile Include="DiceProbability.cpp" />
+    <ClCompile Include="Swap.cpp" />
+    <ClCompile Include="Templates.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

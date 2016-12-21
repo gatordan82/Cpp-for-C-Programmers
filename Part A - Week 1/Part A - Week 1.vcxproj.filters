@@ -21,5 +21,11 @@
     <ClCompile Include="CDiceProbability.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Swap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Templates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
