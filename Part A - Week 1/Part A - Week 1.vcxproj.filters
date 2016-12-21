@@ -18,5 +18,8 @@
     <ClCompile Include="DiceProbability.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CDiceProbability.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
