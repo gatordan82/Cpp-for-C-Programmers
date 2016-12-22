@@ -43,6 +43,9 @@ int main()
 	templates::swap(r, s);
 	cout << "outputs: " << r << ", " << s << endl;
 
+	cout << 'A' << endl;
+	cout << static_cast<int>('A') << endl;
+
 	cin.get();
 	cin.get();
 
