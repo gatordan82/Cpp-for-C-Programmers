@@ -23,10 +23,11 @@ public:
 
 	void chgPriority(Comparable& e, double priority);
 	Comparable& minPriority(Comparable& e);
-	bool contains(Comparable& e);
+	bool contains(Comparable& e) const;
 	void insert(Comparable& e);
 	Comparable& top();
-	size_t size();
+	size_t size() const;
+	bool isEmpty() const;
 };
 
 

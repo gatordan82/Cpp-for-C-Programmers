@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 
 int main()
 {
@@ -68,11 +69,15 @@ int main()
 		cout << e.toString() << endl;
 
 
-
+	cout << "\nBuild a random graph." << endl;
 	std::array<double, 2> range{ 0.0, 10.0 };
-
-	Graph random(10, 0.2, range);
+	Graph random(20, 0.2, range);
 	cout << random.toString() << endl;
+
+	for (size_t i{ 0 }; i < random.V(); ++i)
+		cout << "Degree of vertex " << i << " is: " << random.degree(i) << endl;
+
+	
 
 	cin.get();
 

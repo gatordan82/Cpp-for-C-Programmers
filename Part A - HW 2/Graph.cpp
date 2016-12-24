@@ -60,9 +60,12 @@ Graph::Graph(size_t vertices, double density, array<double, 2> distanceRange)
 	uniform_real_distribution<double> value(distanceRange[0], distanceRange[1]);
 	default_random_engine e(time(0));
 
-	for (int i = 0; i < _vertices; ++i)
-		for (int j = 0; j <= i; ++j)
-			if (prob(e) < density) addEdge(i, j, value(e));
+	for (int i = 0; i < vertices; ++i)
+		for (int j = 0; j < i; ++j)
+		{
+			if (i != j && prob(e) < density)
+				addEdge(i, j, value(e));
+		}
 }
 
 Graph::Graph(const Graph& g)
