@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{738B40B3-032B-4F0C-B9AE-91B336043323}</ProjectGuid>
-    <RootNamespace>PartAWeek1</RootNamespace>
+    <ProjectGuid>{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}</ProjectGuid>
+    <RootNamespace>PartAWeek2</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -110,10 +110,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CDiceProbability.cpp" />
-    <ClCompile Include="DiceProbability.cpp" />
-    <ClCompile Include="Swap.cpp" />
-    <ClCompile Include="Templates.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="PointStruct.cpp" />
+    <ClCompile Include="TypedefDays.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

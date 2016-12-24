@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part A - HW 2", "Part A - H
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharedPointers", "SharedPointers\SharedPointers.vcxproj", "{E2C1E003-501D-400A-BAAE-3B65FDBF8DCE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part A - Week 2", "Part A - Week 2\Part A - Week 2.vcxproj", "{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{E2C1E003-501D-400A-BAAE-3B65FDBF8DCE}.Release|x64.Build.0 = Release|x64
 		{E2C1E003-501D-400A-BAAE-3B65FDBF8DCE}.Release|x86.ActiveCfg = Release|Win32
 		{E2C1E003-501D-400A-BAAE-3B65FDBF8DCE}.Release|x86.Build.0 = Release|Win32
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Debug|x64.ActiveCfg = Debug|x64
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Debug|x64.Build.0 = Debug|x64
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Debug|x86.ActiveCfg = Debug|Win32
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Debug|x86.Build.0 = Debug|Win32
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Release|x64.ActiveCfg = Release|x64
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Release|x64.Build.0 = Release|x64
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Release|x86.ActiveCfg = Release|Win32
+		{A6F5146B-4EF0-4C29-BCAF-7B8B7BEF3444}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

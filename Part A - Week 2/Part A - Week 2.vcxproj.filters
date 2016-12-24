@@ -15,16 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DiceProbability.cpp">
+    <ClCompile Include="TypedefDays.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CDiceProbability.cpp">
+    <ClCompile Include="PointStruct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Swap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Templates.cpp">
+    <ClCompile Include="Point.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
