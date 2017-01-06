@@ -10,7 +10,8 @@ template <class Key, class Index=size_t>
 class IndexPriorityQueue
 {
 private:
-	std::vector<std::pair<Key, Index> _heap;
+	typedef std::vector<std::pair<Key, Index>> vector;
+	vector _heap;
 
 public:
 	IndexPriorityQueue();
