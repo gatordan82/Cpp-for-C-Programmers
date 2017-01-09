@@ -11,9 +11,9 @@ template <class Key, class Index=size_t>
 class IndexMinPriorityQueue
 {
 private:
-	typedef std::pair<Key, Index> pair;
-	typedef std::vector<pair> vector;
-	vector _heap;
+	std::vector<Index> _pq;
+	std::vector<Index> _qp;
+	std::vector<Key> _keys;
 
 public:
 	IndexMinPriorityQueue();
@@ -35,13 +35,18 @@ public:
 	void changeKey(Key& newPriority, Index& i);
 	void delete(Index& i);
 
+private:
+	bool greater(Index i, Index j) const;
+	void exchange(Index i, Index j);
+	void swim(Index i);
+	void sink(Index i);
 };
 
 #endif // !_INDEXMINPRIORITYQUEUE_H
 
 template<class Key, class Index>
 inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue()
-	: _heap(vector{})
+	: _pq{ vector<Index>{} }, 
 {
 }
 
@@ -149,4 +154,43 @@ inline Key& IndexMinPriorityQueue<Key, Index>::keyOf(Index& i) const
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::changeKey(Key& newPriority, Index & i)
 {
+}
+
+template<class Key, class Index>
+inline bool IndexMinPriorityQueue<Key, Index>::greater(Index i, Index j) const
+{
+	return (_keys[_pq[i]] > _keys[_pq[j]]);
+}
+
+template<class Key, class Index>
+inline void IndexMinPriorityQueue<Key, Index>::exchange(Index i, Index j)
+{
+	Index swap = _pq[i];
+	_pq[i] = _pq[j];
+	_pq[j] = swap;
+	_qp[_pq[i]] = i;
+	_qp[_pq[j]] = j;
+}
+
+template<class Key, class Index>
+inline void IndexMinPriorityQueue<Key, Index>::swim(Index i)
+{
+	while (i > 1 && greater(i / 2, i))
+	{
+		exchange(i, i / 2);
+		i = i / 2;
+	}
+}
+
+template<class Key, class Index>
+inline void IndexMinPriorityQueue<Key, Index>::sink(Index i)
+{
+	while (2 * i <= size())
+	{
+		Index j = 2 * i;
+		if (j < size() && greater(j, j + 1)) j++;
+		if (!greater(i, j)) break;
+		exchange(i, j);
+		i = j;
+	}
 }
