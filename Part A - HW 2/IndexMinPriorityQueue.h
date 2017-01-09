@@ -45,7 +45,7 @@ private:
 	void sink(Index i);
 };
 
-#endif // !_INDEXMINPRIORITYQUEUE_H
+
 
 
 template<class Key, class Index>
@@ -220,3 +220,5 @@ inline void IndexMinPriorityQueue<Key, Index>::sink(Index i)
 		i = j;
 	}
 }
+
+#endif // !_INDEXMINPRIORITYQUEUE_H

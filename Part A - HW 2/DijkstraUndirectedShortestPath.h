@@ -4,6 +4,7 @@
 #include "Graph.h"
 #include "IndexMinPriorityQueue.h"
 #include <vector>
+#include <stack>
 
 class DijkstraUndirectedShortestPath
 {
@@ -24,7 +25,7 @@ public:
 
 	const dist& distTo(const vertex& sink) const;
 	bool hasPathTo(const vertex& sink) const;
-	const std::vector<edge>& pathTo(const vertex& sink) const;
+	const std::stack<edge>& pathTo(const vertex& sink) const;
 
 private:
 	void relax(const edge& e, const vertex& v);

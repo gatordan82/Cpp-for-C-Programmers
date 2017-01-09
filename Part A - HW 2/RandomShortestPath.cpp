@@ -5,7 +5,8 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
-#include "IndexMinPriorityQueue.h"
+// #include "IndexMinPriorityQueue.h"
+#include "DijkstraUndirectedShortestPath.h"
 
 int main()
 {
@@ -84,6 +85,8 @@ int main()
 
 	IndexMinPriorityQueue<Edge<double>, int> pq{ V };
 
+	DijkstraUndirectedShortestPath dsp{ random, 0 };
+	stack<Edge<double>> pathToEnd{ dsp.pathTo(V - 1) };
 
 
 	cin.get();

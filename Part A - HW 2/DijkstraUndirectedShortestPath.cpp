@@ -20,6 +20,8 @@ DijkstraUndirectedShortestPath::DijkstraUndirectedShortestPath(const Graph& g, v
 		vertex v = _pq.removeMin();
 		for (const edge& e : g.neighbors(v))
 			relax(e, v);
+
+		// TODO: Fix this from breaking.
 	}
 }
 
@@ -37,17 +39,17 @@ bool DijkstraUndirectedShortestPath::hasPathTo(const vertex& sink) const
 	return (_distTo[sink] < infinity);
 }
 
-const vector<DijkstraUndirectedShortestPath::edge>& DijkstraUndirectedShortestPath::pathTo(const vertex& sink) const
+const stack<DijkstraUndirectedShortestPath::edge>& DijkstraUndirectedShortestPath::pathTo(const vertex& sink) const
 {
-	vector<edge> path{};
+	stack<edge> path{};
 	
 	if (!hasPathTo(sink)) return path;
 
 	vertex x{ sink };
-	for (edge e = _edgeTo[sink]; e; e = _edgeTo[x])
+	for (edge e = _edgeTo[sink]; &e; e = _edgeTo[x])
 	{
-		path.push_back(e);
-		x = e.second();
+		path.push(e);
+		x = e.first();
 	}
 }
 
