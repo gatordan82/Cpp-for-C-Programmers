@@ -113,7 +113,6 @@
     <ClInclude Include="Bag.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="IndexMinPriorityQueue.h" />
-    <ClInclude Include="IndexPriorityQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Edge.h" />

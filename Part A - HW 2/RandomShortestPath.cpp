@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include "IndexMinPriorityQueue.h"
 
 //int main()
 //{
@@ -74,6 +75,10 @@
 //	Graph random(10, 0.2, range);
 //	cout << random.toString() << endl;
 //
+//
+//
+//
+//	cin.get();
 //	cin.get();
 //
 //	return 0;

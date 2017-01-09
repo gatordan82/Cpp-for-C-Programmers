@@ -11,13 +11,16 @@ template <class Key, class Index=size_t>
 class IndexMinPriorityQueue
 {
 private:
+	const Index DNE{static_cast<Index>(-1)}; // index does not exist
+	size_t _maxN;
+	size_t _N;
 	std::vector<Index> _pq;
 	std::vector<Index> _qp;
 	std::vector<Key> _keys;
 
 public:
-	IndexMinPriorityQueue();
-	explicit IndexMinPriorityQueue(size_t size);
+	IndexMinPriorityQueue() = delete;
+	explicit IndexMinPriorityQueue(size_t maxN);
 	IndexMinPriorityQueue(const IndexMinPriorityQueue<Key, Index>& pq);
 
 	~IndexMinPriorityQueue();
@@ -28,12 +31,12 @@ public:
 	bool containsIndex(Index& i) const;
 	size_t size() const;
 	void insert(Key& k, Index& i);
-	Key& minKey() const;
-	Index& minIndex() const;
+	const Key& minKey() const;
+	const Index& minIndex() const;
 	Index& removeMin();
-	Key& keyOf(Index& i) const;
+	const Key& keyOf(Index& i) const;
 	void changeKey(Key& newPriority, Index& i);
-	void delete(Index& i);
+	void deleteIndex(Index& i);
 
 private:
 	bool greater(Index i, Index j) const;
@@ -44,22 +47,23 @@ private:
 
 #endif // !_INDEXMINPRIORITYQUEUE_H
 
+
 template<class Key, class Index>
-inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue()
-	: _pq{ vector<Index>{} }, 
+inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(size_t maxN)
+	: _maxN{ maxN }, _N{ 0 }, 
+	_pq{ std::vector<Index>(maxN + 1, 0) },
+	_qp{ std::vector<Index>(maxN + 1, DNE) },
+	_keys{ std::vector<Key>(maxN + 1, Key{}) }
 {
+	
 }
 
 template<class Key, class Index>
-inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(size_t size)
-	: _heap(vector{})
-{
-	_heap.resize(size);
-}
-
-template<class Key, class Index>
-inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(const IndexMinPriorityQueue<Key, Index>& pq)
-	: _heap{ pq._heap }
+inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(const IndexMinPriorityQueue<Key, Index>& impq)
+	: _maxN{ pq._maxN }, _N{ pq._N },
+	_pq{ impq._pq },
+	_qp{ impq._qp },
+	_keys{ impq._keys }
 {
 }
 
@@ -69,11 +73,15 @@ inline IndexMinPriorityQueue<Key, Index>::~IndexMinPriorityQueue()
 }
 
 template<class Key, class Index>
-inline IndexMinPriorityQueue<Key, Index>& IndexMinPriorityQueue<Key, Index>::operator=(const IndexMinPriorityQueue<Key, Index>& pq)
+inline IndexMinPriorityQueue<Key, Index>& IndexMinPriorityQueue<Key, Index>::operator=(const IndexMinPriorityQueue<Key, Index>& impq)
 {
 	if (&pq != this)
 	{
-		_heap = pq._heap;
+		_maxN = impq._maxN;
+		_N = impq._N;
+		_pq = impq._pq;
+		_qp = impq._qp;
+		_keys = impq._keys;
 	}
 
 	return *this;
@@ -82,78 +90,96 @@ inline IndexMinPriorityQueue<Key, Index>& IndexMinPriorityQueue<Key, Index>::ope
 template<class Key, class Index>
 inline bool IndexMinPriorityQueue<Key, Index>::isEmpty() const
 {
-	return (_heap.size == 0);
+	return (_N == 0);
 }
 
 template<class Key, class Index>
 inline bool IndexMinPriorityQueue<Key, Index>::containsIndex(Index& i) const
 {
-	const auto& it = std::find_if(_heap.begin(), _heap.end(), 
-		[](const pair& p)
-	{
-		p.second == i;
-	});
+	if (i < 0 || i >= _maxN) throw std::out_of_range{""};
 
-	return (it != _heap.end());
+	return (_qp[i] != DNE);
 }
 
 template<class Key, class Index>
 inline size_t IndexMinPriorityQueue<Key, Index>::size() const
 {
-	return _heap.size();
+	return _N;
 }
 
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::insert(Key& k, Index& i)
 {
-	_heap.push_back(pair{ k, i });
-	std::push_heap(_heap.begin(), _heap.end());
+	if (i < 0 || i >= _maxN) throw std::out_of_range{""};
+	if (containsIndex(i)) throw std::invalid_argument{ "Index is already in the priority queue." };
+
+	++_N;
+	_qp[i] = _N;
+	_pq[_N] = i;
+	_keys[i] = k;
+	swim(_N);
 }
 
 template<class Key, class Index>
-inline Key& IndexMinPriorityQueue<Key, Index>::minKey() const
+inline const Key& IndexMinPriorityQueue<Key, Index>::minKey() const
 {
-	if (size() == 0)
-		throw std::length_error{ "Priority Queue is empty." };
+	if (_N == 0) throw std::out_of_range{ "No elements in priority queue." };
 
-	return _heap[0].first;
+	return _keys[_pq[1]];
 }
 
 template<class Key, class Index>
-inline Index& IndexMinPriorityQueue<Key, Index>::minIndex() const
+inline const Index& IndexMinPriorityQueue<Key, Index>::minIndex() const
 {
-	if (size() == 0)
-		throw std::length_error{ "Priority Queue is empty." };
+	if (_N == 0) throw std::out_of_range{ "No elements in priority queue." };
 
-	return _heap[0].second;
+	return _pq[1];
 }
 
 template<class Key, class Index>
 inline typename Index& IndexMinPriorityQueue<Key, Index>::removeMin()
 {
-	if (size() == 0)
-		throw std::length_error{ "Priority Queue is empty." };
+	if (_N == 0) throw std::out_of_range{ "No elements in priority queue." };
 
-	std::pop_heap(_heap.begin(), _heap.end());
-	
-	return _heap.pop_back().second;
+	Index min = _pq[1];
+	exchange(1, _N--);
+	sink(1);
+	_qp[min] = DNE;
+
+	return min;
 }
 
 template<class Key, class Index>
-inline Key& IndexMinPriorityQueue<Key, Index>::keyOf(Index& i) const
+inline const Key& IndexMinPriorityQueue<Key, Index>::keyOf(Index& i) const
 {
-	const auto& it = std::find_if(_heap.begin(), _heap.end(),
-		[](const pair& p)
-	{
-		p.second == i;
-	});
+	if (i < 0 || i >= _maxN) throw std::out_of_range{""};
+	if (!containsIndex(i)) throw std::invalid_argument{ "Index is not in the priority queue." };
 
-	return it->first;
+	return _keys[i];
 }
 
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::changeKey(Key& newPriority, Index & i)
 {
+	if (i < 0 || i >= _maxN) throw std::out_of_range{""};
+	if (!containsIndex(i)) throw std::invalid_argument{ "Index is not in the priority queue." };
+
+	_keys[i] = newPriority;
+	swim(_qp[i]);
+	sink(_qp[i]);
+}
+
+template<class Key, class Index>
+inline void IndexMinPriorityQueue<Key, Index>::deleteIndex(Index & i)
+{
+	if (i < 0 || i >= _maxN) throw std::out_of_range{""};
+	if (!containsIndex(i)) throw std::invalid_argument{ "Index is not in the priority queue." };
+
+	Index idx = _qp[i];
+	exchange(idx, _N--);
+	swim(idx);
+	sink(idx);
+	_qp[i] = DNE;
 }
 
 template<class Key, class Index>

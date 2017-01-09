@@ -21,9 +21,6 @@
     <ClInclude Include="Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IndexPriorityQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IndexMinPriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
