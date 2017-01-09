@@ -111,10 +111,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bag.h" />
+    <ClInclude Include="DijkstraUndirectedShortestPath.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="IndexMinPriorityQueue.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DijkstraUndirectedShortestPath.cpp" />
     <ClCompile Include="Edge.h" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="MinHeap.cpp" />

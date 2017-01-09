@@ -20,7 +20,7 @@ private:
 
 public:
 	IndexMinPriorityQueue() = delete;
-	explicit IndexMinPriorityQueue(size_t maxN);
+	explicit IndexMinPriorityQueue(Index maxN);
 	IndexMinPriorityQueue(const IndexMinPriorityQueue<Key, Index>& pq);
 
 	~IndexMinPriorityQueue();
@@ -49,8 +49,8 @@ private:
 
 
 template<class Key, class Index>
-inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(size_t maxN)
-	: _maxN{ maxN }, _N{ 0 }, 
+inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(Index maxN)
+	: _maxN{ static_cast<size_t>(maxN) }, _N{ 0 }, 
 	_pq{ std::vector<Index>(maxN + 1, 0) },
 	_qp{ std::vector<Index>(maxN + 1, DNE) },
 	_keys{ std::vector<Key>(maxN + 1, Key{}) }

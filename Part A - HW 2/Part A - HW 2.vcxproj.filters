@@ -24,6 +24,9 @@
     <ClInclude Include="IndexMinPriorityQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DijkstraUndirectedShortestPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Edge.h">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MinHeap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DijkstraUndirectedShortestPath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

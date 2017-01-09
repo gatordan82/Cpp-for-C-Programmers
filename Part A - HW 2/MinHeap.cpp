@@ -6,37 +6,37 @@
 #include "IndexMinPriorityQueue.h"
 #include <string>
 
-int main()
-{
-	using namespace std;
-
-	vector<string> strings{ "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
-	IndexMinPriorityQueue<string, size_t> pq{ strings.size() };
-
-	cout << "Is the priority queue empty? " << boolalpha << pq.isEmpty() << "\n\n";
-
-	for (size_t i{ 0 }; i < strings.size(); ++i)
-	{
-		pq.insert(strings[i], i);
-	}
-
-	size_t idx1{ 5 };
-	pq.changeKey(string{ "Times" }, idx1);
-	cout << "Contains Index " << idx1 << " (key)? " 
-		 << boolalpha << pq.containsIndex(idx1) << "(" << pq.keyOf(idx1) << ")" << endl;
-	pq.deleteIndex(idx1);
-	
-
-	cout << "(Min key, Min index): " << endl;
-	while (!pq.isEmpty())
-	{
-		string minKey = pq.minKey();
-		size_t minIndex = pq.minIndex();
-
-		size_t i = pq.removeMin();
-		cout << minKey << ", " << minIndex << endl;
-	}
-	cout << "\n\n";
+//int main()
+//{
+//	using namespace std;
+//
+//	vector<string> strings{ "it", "was", "the", "best", "of", "times", "it", "was", "the", "worst" };
+//	IndexMinPriorityQueue<string, size_t> pq{ strings.size() };
+//
+//	cout << "Is the priority queue empty? " << boolalpha << pq.isEmpty() << "\n\n";
+//
+//	for (size_t i{ 0 }; i < strings.size(); ++i)
+//	{
+//		pq.insert(strings[i], i);
+//	}
+//
+//	size_t idx1{ 5 };
+//	pq.changeKey(string{ "Times" }, idx1);
+//	cout << "Contains Index " << idx1 << " (key)? " 
+//		 << boolalpha << pq.containsIndex(idx1) << "(" << pq.keyOf(idx1) << ")" << endl;
+//	pq.deleteIndex(idx1);
+//	
+//
+//	cout << "(Min key, Min index): " << endl;
+//	while (!pq.isEmpty())
+//	{
+//		string minKey = pq.minKey();
+//		size_t minIndex = pq.minIndex();
+//
+//		size_t i = pq.removeMin();
+//		cout << minKey << ", " << minIndex << endl;
+//	}
+//	cout << "\n\n";
 
 
 
@@ -105,7 +105,7 @@ int main()
 	//for (const auto& e : numbers)
 	//	cout << e << endl;
 
-	cin.get();
-	cin.get();
-
-}
+//	cin.get();
+//	cin.get();
+//
+//}
