@@ -6,6 +6,7 @@
 #include <vector>
 #include <array>
 #include <algorithm>
+#include <iostream>
 
 class Graph
 {
@@ -45,6 +46,7 @@ public:
 	double getVertexValue(int x) const;
 	void setVertexValue(int x, double vertexValue);
 
+	friend std::ostream& operator<<(std::ostream& os, const Graph& g);
 	std::string toString() const;
 
 };

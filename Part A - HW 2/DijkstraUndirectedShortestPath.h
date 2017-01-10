@@ -25,7 +25,7 @@ public:
 
 	const dist& distTo(const vertex& sink) const;
 	bool hasPathTo(const vertex& sink) const;
-	const std::stack<edge>& pathTo(const vertex& sink) const;
+	std::stack<edge> pathTo(const vertex& sink) const;
 
 private:
 	void relax(const edge& e, const vertex& v);

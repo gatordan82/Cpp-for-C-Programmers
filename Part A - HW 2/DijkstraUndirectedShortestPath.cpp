@@ -8,7 +8,7 @@ const double infinity{ numeric_limits<double>::infinity() };
 
 DijkstraUndirectedShortestPath::DijkstraUndirectedShortestPath(const Graph& g, vertex source)
 	: _distTo{ vector<dist>(g.V(), infinity) },
-	_edgeTo{ vector<Edge<dist>>{} },
+	_edgeTo{ vector<Edge<dist>>(g.V(), Edge<double>{}) },
 	_pq{ IndexMinPriorityQueue<dist, vertex>{g.V()} }
 {
 	_distTo[source] = 0.0;
@@ -20,8 +20,6 @@ DijkstraUndirectedShortestPath::DijkstraUndirectedShortestPath(const Graph& g, v
 		vertex v = _pq.removeMin();
 		for (const edge& e : g.neighbors(v))
 			relax(e, v);
-
-		// TODO: Fix this from breaking.
 	}
 }
 
@@ -39,18 +37,23 @@ bool DijkstraUndirectedShortestPath::hasPathTo(const vertex& sink) const
 	return (_distTo[sink] < infinity);
 }
 
-const stack<DijkstraUndirectedShortestPath::edge>& DijkstraUndirectedShortestPath::pathTo(const vertex& sink) const
+stack<DijkstraUndirectedShortestPath::edge> DijkstraUndirectedShortestPath::pathTo(const vertex& sink) const
 {
 	stack<edge> path{};
 	
 	if (!hasPathTo(sink)) return path;
 
 	vertex x{ sink };
-	for (edge e = _edgeTo[sink]; &e; e = _edgeTo[x])
+	edge e{ _edgeTo[sink] };
+	edge e0{};
+	while (e != e0)
 	{
 		path.push(e);
 		x = e.first();
+		e = _edgeTo[x];
 	}
+
+	return path;
 }
 
 void DijkstraUndirectedShortestPath::relax(const edge& e, const vertex& v)

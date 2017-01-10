@@ -199,3 +199,12 @@ string Graph::toString() const
 
 	return graphString;
 }
+
+ostream& operator<<(ostream& os, const Graph& g)
+{
+	for (const auto& bag : g._edgeLists)
+		for (const auto& edge : bag)
+			os << edge << endl;
+
+	return os;
+}

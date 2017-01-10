@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-template <class Weight>
+template <class Weight=double>
 class Edge
 {
 private:
@@ -36,8 +36,11 @@ public:
 	bool operator<(const Edge<Weight>& e) const;
 	bool operator>(const Edge<Weight>& e) const;
 	bool operator==(const Edge<Weight>& e) const; 
+	bool operator!=(const Edge<Weight>& e) const;
 
 	// string representation
+	template <class Weight=double>
+	friend std::ostream& operator<<(std::ostream& os, const Edge<Weight>& e);
 	std::string toString() const;
 };
 
@@ -138,6 +141,18 @@ inline bool Edge<Weight>::operator==(const Edge<Weight>& e) const
 		&& (_weight == e._weight);
 }
 
+template<class Weight>
+inline bool Edge<Weight>::operator!=(const Edge<Weight>& e) const
+{
+	return (_first != e._first 
+		|| _second != e._second);
+}
+
+template<class Weight>
+inline std::ostream& operator<<(std::ostream& os, const Edge<Weight>& e)
+{
+	return os << e._first << "-" << e._second << ", " << e._weight;
+}
 
 template<class Weight>
 inline std::string Edge<Weight>::toString() const
@@ -151,3 +166,5 @@ inline std::string Edge<Weight>::toString() const
 
 
 #endif // !_EDGE_H
+
+
