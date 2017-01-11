@@ -1,3 +1,17 @@
+// IndexMinPriorityQueue.h
+//
+// C++ for C Programmers, Part A
+// Homework 2: Implement Dijkstra's Algorithm
+// 
+// Min priority queue, with indexing of the keys
+// Implemented with a binary heap
+// Removal of the minimum key is O(1)
+// All other operations are O(lg n)
+// Supports changing the key of a given (Key, Index) pair
+//
+// Daniel K. Benjamin
+// 1/8/2017
+
 #ifndef _INDEXMINPRIORITYQUEUE_H
 #define _INDEXMINPRIOIRYTQUEUE_H
 
@@ -12,21 +26,25 @@ class IndexMinPriorityQueue
 {
 private:
 	const Index DNE{static_cast<Index>(-1)}; // index does not exist
-	size_t _maxN;
-	size_t _N;
-	std::vector<Index> _pq;
-	std::vector<Index> _qp;
-	std::vector<Key> _keys;
+	size_t _maxN;							 // max number of elements allowed
+	size_t _N;								 // current number of elements in the queue
+	std::vector<Index> _pq;                  // binary heap of the indices
+	std::vector<Index> _qp;					 // vector to store index for elements in the heap
+	std::vector<Key> _keys;                  // vector of just the keys
 
 public:
-	IndexMinPriorityQueue() = delete;
+	// constructors
+	IndexMinPriorityQueue() = delete;		 
 	explicit IndexMinPriorityQueue(Index maxN);
 	IndexMinPriorityQueue(const IndexMinPriorityQueue<Key, Index>& pq);
 
+	// destructor
 	~IndexMinPriorityQueue();
 
+	// copy assignment
 	IndexMinPriorityQueue<Key, Index>& operator=(const IndexMinPriorityQueue<Key, Index>& pq);
 
+	// Priority queue API
 	bool isEmpty() const;
 	bool containsIndex(Index& i) const;
 	size_t size() const;
@@ -39,15 +57,15 @@ public:
 	void deleteIndex(Index& i);
 
 private:
-	bool greater(Index i, Index j) const;
+	// helper methods
+	bool greater(Index i, Index j) const;	
 	void exchange(Index i, Index j);
 	void swim(Index i);
 	void sink(Index i);
 };
 
-
-
-
+// construct an empty queue
+// empty elements will show does not exist (DNE) for a given index
 template<class Key, class Index>
 inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(Index maxN)
 	: _maxN{ static_cast<size_t>(maxN) }, _N{ 0 }, 
@@ -58,6 +76,7 @@ inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(Index maxN)
 	
 }
 
+// copy constructor
 template<class Key, class Index>
 inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(const IndexMinPriorityQueue<Key, Index>& impq)
 	: _maxN{ pq._maxN }, _N{ pq._N },
@@ -67,11 +86,14 @@ inline IndexMinPriorityQueue<Key, Index>::IndexMinPriorityQueue(const IndexMinPr
 {
 }
 
+// destructor
 template<class Key, class Index>
 inline IndexMinPriorityQueue<Key, Index>::~IndexMinPriorityQueue()
 {
 }
 
+
+// copy assignment operator
 template<class Key, class Index>
 inline IndexMinPriorityQueue<Key, Index>& IndexMinPriorityQueue<Key, Index>::operator=(const IndexMinPriorityQueue<Key, Index>& impq)
 {
@@ -87,12 +109,14 @@ inline IndexMinPriorityQueue<Key, Index>& IndexMinPriorityQueue<Key, Index>::ope
 	return *this;
 }
 
+// return true if the queue is empty
 template<class Key, class Index>
 inline bool IndexMinPriorityQueue<Key, Index>::isEmpty() const
 {
 	return (_N == 0);
 }
 
+// return true if the queue contains a given index
 template<class Key, class Index>
 inline bool IndexMinPriorityQueue<Key, Index>::containsIndex(Index& i) const
 {
@@ -101,12 +125,14 @@ inline bool IndexMinPriorityQueue<Key, Index>::containsIndex(Index& i) const
 	return (_qp[i] != DNE);
 }
 
+// return the current number of elements in the queue
 template<class Key, class Index>
 inline size_t IndexMinPriorityQueue<Key, Index>::size() const
 {
 	return _N;
 }
 
+// insert an element into the queue, and heapify the new element
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::insert(Key& k, Index& i)
 {
@@ -120,6 +146,7 @@ inline void IndexMinPriorityQueue<Key, Index>::insert(Key& k, Index& i)
 	swim(_N);
 }
 
+// returns the current min key in the queue, but doesn't remove it
 template<class Key, class Index>
 inline const Key& IndexMinPriorityQueue<Key, Index>::minKey() const
 {
@@ -128,6 +155,7 @@ inline const Key& IndexMinPriorityQueue<Key, Index>::minKey() const
 	return _keys[_pq[1]];
 }
 
+// return the index of the min key in the queue, but doesn't remove it
 template<class Key, class Index>
 inline const Index& IndexMinPriorityQueue<Key, Index>::minIndex() const
 {
@@ -136,6 +164,7 @@ inline const Index& IndexMinPriorityQueue<Key, Index>::minIndex() const
 	return _pq[1];
 }
 
+// remove the min key from the queue, and return the index associated with that key
 template<class Key, class Index>
 inline typename Index& IndexMinPriorityQueue<Key, Index>::removeMin()
 {
@@ -149,6 +178,7 @@ inline typename Index& IndexMinPriorityQueue<Key, Index>::removeMin()
 	return min;
 }
 
+// return the key for a given index
 template<class Key, class Index>
 inline const Key& IndexMinPriorityQueue<Key, Index>::keyOf(Index& i) const
 {
@@ -158,6 +188,7 @@ inline const Key& IndexMinPriorityQueue<Key, Index>::keyOf(Index& i) const
 	return _keys[i];
 }
 
+// update the key for a given index, to the new priority, and re-heapify
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::changeKey(Key& newPriority, Index & i)
 {
@@ -169,6 +200,7 @@ inline void IndexMinPriorityQueue<Key, Index>::changeKey(Key& newPriority, Index
 	sink(_qp[i]);
 }
 
+// remove the index and associated key from the queue, and re-heapify
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::deleteIndex(Index & i)
 {
@@ -182,12 +214,14 @@ inline void IndexMinPriorityQueue<Key, Index>::deleteIndex(Index & i)
 	_qp[i] = DNE;
 }
 
+// tests if the key of one index is greater than the key of another
 template<class Key, class Index>
 inline bool IndexMinPriorityQueue<Key, Index>::greater(Index i, Index j) const
 {
 	return (_keys[_pq[i]] > _keys[_pq[j]]);
 }
 
+// exchanges two items in the heap
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::exchange(Index i, Index j)
 {
@@ -198,6 +232,7 @@ inline void IndexMinPriorityQueue<Key, Index>::exchange(Index i, Index j)
 	_qp[_pq[j]] = j;
 }
 
+// traverse and item up the heap
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::swim(Index i)
 {
@@ -208,6 +243,7 @@ inline void IndexMinPriorityQueue<Key, Index>::swim(Index i)
 	}
 }
 
+// traverse and item down the heap
 template<class Key, class Index>
 inline void IndexMinPriorityQueue<Key, Index>::sink(Index i)
 {

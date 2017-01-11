@@ -1,3 +1,14 @@
+// Graph.h
+//
+// C++ for C Programmers, Part A
+// Homework 2: Implement Dijkstra's Algorithm
+// 
+// Graph of undirected edges, with double precision edge weight
+// Implemented with the edge list representation
+//
+// Daniel K. Benjamin
+// 1/8/2017
+
 #ifndef _HW2_GRAPH_H
 #define _HW2_GRAPH_H
 
@@ -11,13 +22,13 @@
 class Graph
 {
 private:
-	size_t _vertices;
-	size_t _edges;
-	std::vector<Bag<Edge<double>>> _edgeLists;
-	std::vector<double> _vertexValues;
+	size_t _vertices;							// current number of vertices
+	size_t _edges;								// current number of edges
+	std::vector<Bag<Edge<double>>> _edgeLists;  // List of edges from each vertex
+	std::vector<double> _vertexValues;			// current value of each vertex
 
-	void validateVertex(int x) const;
-	void validateVertices(int x, int y) const;
+	void validateVertex(int x) const;	        // check if vertex is in the graph
+	void validateVertices(int x, int y) const;  // check if two vertices are both in the graph
 
 public:
 	// Constructors
