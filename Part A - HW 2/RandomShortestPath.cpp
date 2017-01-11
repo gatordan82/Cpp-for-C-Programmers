@@ -7,7 +7,6 @@
 #include <cassert>
 #include <memory>
 #include <numeric>
-// #include "IndexMinPriorityQueue.h"
 #include "DijkstraUndirectedShortestPath.h"
 
 using namespace std;
