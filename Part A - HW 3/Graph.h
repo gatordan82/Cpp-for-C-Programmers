@@ -1,13 +1,14 @@
 // Graph.h
 //
 // C++ for C Programmers, Part A
-// Homework 2: Implement Dijkstra's Algorithm
+// Homework 3: Compute the minimum spanning tree 
+// for an inputted graph
 // 
 // Graph of undirected edges, with double precision edge weight
 // Implemented with the edge list representation
 //
 // Daniel K. Benjamin
-// 1/8/2017
+// 1/13/2017
 
 #ifndef _HW2_GRAPH_H
 #define _HW2_GRAPH_H
@@ -18,6 +19,7 @@
 #include <array>
 #include <algorithm>
 #include <iostream>
+#include <string>
 
 class Graph
 {
@@ -35,6 +37,7 @@ public:
 	Graph();
 	explicit Graph(size_t vertices);
 	explicit Graph(std::vector<Bag<Edge<double>>> edgeList);
+	explicit Graph(std::string inputFileName);
 	Graph(size_t vertices, double density, std::array<double, 2> distanceRange);
 	Graph(const Graph& g);
 	
@@ -59,6 +62,7 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Graph& g);
 	std::string toString() const;
+
 
 };
 

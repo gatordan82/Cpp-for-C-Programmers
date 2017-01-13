@@ -41,6 +41,7 @@ public:
 	void changeWeight(Weight w);
 	size_t first() const;
 	size_t second() const;
+	size_t other(size_t v) const;
 	
 	// Comparators: < and > for algorithms, == checks object equality
 	bool operator<(const Edge<Weight>& e) const;
@@ -139,6 +140,14 @@ template<class Weight>
 inline size_t Edge<Weight>::second() const
 {
 	return _second;
+}
+
+// returns the other vertex than the one input
+template<class Weight>
+inline size_t Edge<Weight>::other(size_t v) const
+{
+	if      (v == _first) return _second;
+	else if (v == _second) return _first;
 }
 
 // returns if the edge weight is less than that of the argument

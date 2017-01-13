@@ -13,6 +13,7 @@
 #include <ctime>
 #include <random>
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 
@@ -63,6 +64,29 @@ Graph::Graph(vector<Bag<Edge<double>>> edgeLists)
 		_edges += b.size();
 	
 	_edges /= 2;
+}
+
+// construct a graph from a text file of edges
+Graph::Graph(std::string inputFileName) : Graph::Graph()
+{
+	ifstream str{ inputFileName };
+	str >> _vertices;
+
+	_edges = 0;
+	_edgeLists = vector<Bag<Edge<double>>>(_vertices, Bag<Edge<double>>{});
+	_vertexValues = vector<double>(_vertices, 0.0);
+
+	size_t first{ 0 };
+	size_t second{ 0 };
+	double weight{ 0.0 };
+
+	while (!str.eof())
+	{
+		str >> first;
+		str >> second;
+		str >> weight;
+		addEdge(first, second, weight);
+	}
 }
 
 // construct a random graph with known number of vertices
@@ -232,6 +256,7 @@ string Graph::toString() const
 
 	return graphString;
 }
+
 
 // overloaded ostream operator, to display all edges
 ostream& operator<<(ostream& os, const Graph& g)
