@@ -1,3 +1,13 @@
+// Bag.h
+//
+// C++ for C Programmers, Part A
+// Homework 2: Implement Dijkstra's Algorithm
+// 
+// Abstract un-ordered container of like items
+//
+// Daniel K. Benjamin
+// 1/8/2017
+
 #ifndef _BAG_H
 #define _BAG_H
 
@@ -8,19 +18,16 @@ template <class Item>
 class Bag
 {
 private:
-	size_t _N;
-	//using forward_list = std::forward_list<Item>;
-	std::forward_list<Item> _list;
+	size_t _N;						// Number of elements in bag
+	std::forward_list<Item> _list;  // STL singly-linked list
 
 public:
 	// constructors
 	Bag();
 	Bag(const Bag& b);
 
-	// destructor
 	virtual ~Bag();
 
-	// assignment operators
 	Bag& operator=(const Bag& b);
 
 	// Bag API
@@ -30,18 +37,13 @@ public:
 	void remove(Item it);
 
 	// iterators
-	//using const_iter = forward_list::const_iterator;
 	typename std::forward_list<Item>::const_iterator begin() const;
 	typename std::forward_list<Item>::const_iterator end() const;
-
-	//using iter = forward_list::iterator;
 	typename std::forward_list<Item>::iterator begin();
 	typename std::forward_list<Item>::iterator end();
 };
 
-
-
-
+// Constructor of an empty bag
 template<class Item>
 inline Bag<Item>::Bag()
 	: _N{ 0 }, 
@@ -49,6 +51,7 @@ inline Bag<Item>::Bag()
 {
 }
 
+// Copy constructor
 template<class Item>
 inline Bag<Item>::Bag(const Bag<Item>& b)
 	: _N{ b._N },
@@ -56,12 +59,13 @@ inline Bag<Item>::Bag(const Bag<Item>& b)
 {
 }
 
-
+// Destructor
 template<class Item>
 inline Bag<Item>::~Bag()
 {
 }
 
+// Copy assignment
 template<class Item>
 inline Bag<Item>& Bag<Item>::operator=(const Bag<Item>& b)
 {
@@ -74,25 +78,28 @@ inline Bag<Item>& Bag<Item>::operator=(const Bag<Item>& b)
 	return *this;
 }
 
+// Return if there no elements in the bag
 template<class Item>
 inline bool Bag<Item>::isEmpty() const
 {
 	return (_N == 0);
 }
 
+// Current number of elements stored in the bag
 template<class Item>
 inline size_t Bag<Item>::size() const
 {
 	return _N;
 }
 
+// Insert an element into the bag
 template<class Item>
 inline void Bag<Item>::add(Item it)
 {
 	_list.push_front(it);
 	++_N;
 }
-
+// Remove an item from the bag
 template<class Item>
 inline void Bag<Item>::remove(Item it)
 {
@@ -100,6 +107,7 @@ inline void Bag<Item>::remove(Item it)
 	--_N;
 }
 
+// Bag (const and non-const) iterators
 template<class Item>
 typename std::forward_list<Item>::const_iterator Bag<Item>::begin() const
 {
