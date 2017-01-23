@@ -15,16 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Other Student%27s Projects\main.cpp">
+    <ClCompile Include="MapExample2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Other Student%27s Projects\UndirectedGraph.cpp">
+    <ClCompile Include="for_each_ex1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Other Student%27s Projects\UndirectedGraph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="numerical_ex1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
