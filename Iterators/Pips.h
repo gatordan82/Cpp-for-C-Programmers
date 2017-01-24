@@ -1,4 +1,3 @@
-#pragma once
 #ifndef _ITERATORS_PIPS_H
 #define _ITERATORS_PIPS_H
 
@@ -11,14 +10,11 @@ private:
 
 public:
 	Pips(int val);
-	friend std::ostream& operator<<(std::ostream& out, const Pips& p);
 	
 	virtual ~Pips();
 
-	inline int getPips() const
-	{
-		return v;
-	}
+	int getPips() const;
+	friend std::ostream& operator<<(std::ostream& out, const Pips& p);
 };
 
 #endif

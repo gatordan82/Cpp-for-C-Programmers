@@ -4,7 +4,6 @@
 #include "Suit.h"
 #include "Pips.h"
 
-
 class Card
 {
 private:
@@ -19,8 +18,8 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& out, const Card& c);
 
-	inline Suit getSuit() const { return suit; }
-	inline Pips getPips() const { return pips; }
+	Suit getSuit() const;
+	Pips getPips() const;
 };
 
 #endif
