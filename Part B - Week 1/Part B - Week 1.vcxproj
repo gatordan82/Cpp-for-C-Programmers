@@ -111,6 +111,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="for_each_ex1.cpp" />
+    <ClCompile Include="Functor.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapExample2.cpp" />
     <ClCompile Include="numerical_ex1.cpp" />
     <ClCompile Include="square.cpp" />

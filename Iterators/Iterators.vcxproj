@@ -116,7 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Palindrome.cpp" />
     <ClCompile Include="Pips.cpp" />
+    <ClCompile Include="RandomAccess.cpp" />
     <ClCompile Include="TestPips.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
