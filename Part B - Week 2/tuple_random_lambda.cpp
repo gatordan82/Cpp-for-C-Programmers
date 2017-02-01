@@ -45,20 +45,20 @@ double mc_count(double f(double), vector<point>::iterator first, vector <point>:
 	}
 	return(1.0* below / trials);
 }
-
-int main()
-{
-
-	int data_size;
-	cout << " How Many Points? " << endl;
-	cin >> data_size;
-	vector<point> data(data_size);
-	for (auto& element : data)
-		element = random_point();
-
-
-	cout << " PI by MC integration is " <<
-		4.0 * mc_count([](double x) { return (sqrt(1 - x * x)); }, data.begin(), data.end());
-	cout << endl;
-
-}
+//
+//int main()
+//{
+//
+//	int data_size;
+//	cout << " How Many Points? " << endl;
+//	cin >> data_size;
+//	vector<point> data(data_size);
+//	for (auto& element : data)
+//		element = random_point();
+//
+//
+//	cout << " PI by MC integration is " <<
+//		4.0 * mc_count([](double x) { return (sqrt(1 - x * x)); }, data.begin(), data.end());
+//	cout << endl;
+//
+//}

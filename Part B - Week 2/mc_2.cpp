@@ -19,7 +19,7 @@ using namespace std;
 typedef tuple<double, double> point;
 ostream& operator<<(ostream& out, const point&  pt)
 {
-   out  << "( " << get<0>(pt) << ", ";
+   out << "( " << get<0>(pt) << ", ";
    out << get<1>(pt) << ") ";
    return out;
 }

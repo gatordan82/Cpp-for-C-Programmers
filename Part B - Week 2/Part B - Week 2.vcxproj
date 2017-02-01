@@ -120,6 +120,10 @@
     <ClCompile Include="virt_correct.cpp" />
     <ClCompile Include="virt_f.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Duo.h" />
+    <ClInclude Include="Point.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
