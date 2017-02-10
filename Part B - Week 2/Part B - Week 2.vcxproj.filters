@@ -39,9 +39,6 @@
     <ClCompile Include="virt_f.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tuple_random_lambda.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Duo.h">

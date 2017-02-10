@@ -35,14 +35,19 @@ class duo{
      double z;
  };
 
- //int main()
- //{
- //    point q, r(3.0, 4.0);
- //    q.set_first(3.0); q.set_second(4.0);
- //    cout << q.get_first() << ", "  << q.get_second() << endl;  //3, 4
- //    cout << q.length() << endl;                                //5
- //    point3d t;
- //    t.set_first(5.0); t.set_second(6.0); t.set_z(7.0);
- //    cout << t.length() << endl;                                //10.4881
- //}
+ int main()
+ {
+     point q, r(3.0, 4.0);
+     q.set_first(3.0); q.set_second(4.0);
+     cout << q.get_first() << ", "  << q.get_second() << endl;  //3, 4
+     cout << q.length() << endl;                                //5
+     point3d t;
+     t.set_first(5.0); t.set_second(6.0); t.set_z(7.0);
+     cout << t.length() << endl;                                //10.4881
+
+	 cin.get();
+	 cin.get();
+
+	 return 0;
+ }
 

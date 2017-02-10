@@ -115,7 +115,6 @@
     <ClCompile Include="mc_2.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="point2.cpp" />
-    <ClCompile Include="tuple_random_lambda.cpp" />
     <ClCompile Include="virt_confused.cpp" />
     <ClCompile Include="virt_correct.cpp" />
     <ClCompile Include="virt_f.cpp" />
