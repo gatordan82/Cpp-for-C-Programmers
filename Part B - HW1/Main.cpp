@@ -7,15 +7,18 @@ int main()
 {
 	using namespace std;
 
-	HexBoard test{ 11 };
+	HexBoard test{ 7 };
 
-	test.placeMarker(TileMarker::X, 13);
-	test.placeMarker(TileMarker::O, 25);
+	//test.placeMarker(TileMarker::X, 13);
+	//test.placeMarker(TileMarker::O, 25);
 	test.placeMarker(TileMarker::X, 0);
 
 	test.drawBoard();
 
-	test.placeMarker(TileMarker::O, 100);
+	test.placeMarker(TileMarker::O, 1);
+	test.drawBoard();
+
+	test.placeMarker(TileMarker::X, 4);
 	test.drawBoard();
 
 	cin.get();

@@ -64,26 +64,41 @@ void HexBoard::drawBoard() const
 {
 	cout << "\nCurrent Board" << endl;
 	// connect actual board tiles
+	size_t blankCount{ 1 };
+
 	for (size_t i{ 0 }; i < _boardSize * _boardSize; i++)
 	{
 		switch (_board.getVertexValue(i))
 		{
 		case TileMarker::EMPTY:
-			cout << " .";
+			cout << ".";
 			break;
 		case TileMarker::X:
-			cout << " X";
+			cout << "X";
 			break;
 		case TileMarker::O:
-			cout << " O";
+			cout << "O";
 			break;
 		}
 
-		if (i % _boardSize == _boardSize - 1)
+		
+		if (i % _boardSize == _boardSize - 1 && i != _boardSize * _boardSize - 1)
 		{
 			cout << endl;
-			for (size_t j{ 0 }; j < (i + 1) / _boardSize; j++)
+			for (size_t j{ 0 }; j < blankCount; j++)
 				cout << " ";
+			for (size_t k{ 0 }; k < _boardSize - 1; k++)
+				cout << "\\ / ";
+			cout << "\\" << endl;
+			for (size_t j{ 0 }; j < blankCount + 1; j++)
+				cout << " ";
+
+			blankCount += 2;
+		}
+		else
+		{
+			if (i != _boardSize * _boardSize - 1)
+				cout << " - ";
 		}
 	}
 
