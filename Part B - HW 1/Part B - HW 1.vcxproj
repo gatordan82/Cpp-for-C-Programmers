@@ -113,9 +113,13 @@
     <ClInclude Include="..\Part A - HW 2\IndexMinPriorityQueue.h" />
     <ClInclude Include="DenseUndirectedGraph.h" />
     <ClInclude Include="DijkstraUndirectedShortestPath.h" />
+    <ClInclude Include="HexBoard.h" />
+    <ClInclude Include="WeightedQuickUnionPathCompressionUF.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HexBoard.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="WeightedQuickUnionPathCompressionUF.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
