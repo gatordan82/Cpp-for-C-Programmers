@@ -1,44 +1,22 @@
 #include <iostream>
 #include "DenseUndirectedGraph.h"
-
-
-enum class TileMarker : char { NULL_TILE, DOT, X, O };
-
-
-inline std::ostream& operator<<(std::ostream& os, const TileMarker& mark)
-{
-	switch (mark)
-	{
-	case TileMarker::DOT:
-		os << ".";
-		break;
-	case TileMarker::X:
-		os << "X";
-		break;
-	case TileMarker::O:
-		os << "O";
-		break;
-	default:
-		break;
-	}
-
-	return os;
-}
+#include "HexBoard.h"
 
 
 int main()
 {
 	using namespace std;
 
+	HexBoard test{ 11 };
 
-	
+	test.placeMarker(TileMarker::X, 13);
+	test.placeMarker(TileMarker::O, 25);
+	test.placeMarker(TileMarker::X, 0);
 
-	DenseUndirectedGraph<int, TileMarker> test{ 5 };
+	test.drawBoard();
 
-	test.addEdge(1, 2, TileMarker::DOT);
-
-	cout << "Are nodes 1 & 2 connected? " << boolalpha << test.areAdjacent(1, 2) << endl;
-	cout << test << endl;
+	test.placeMarker(TileMarker::O, 100);
+	test.drawBoard();
 
 	cin.get();
 	cin.get();

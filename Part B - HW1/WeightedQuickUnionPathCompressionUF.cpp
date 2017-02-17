@@ -12,9 +12,6 @@ void WeightedQuickUnionPathCompressionUF::validate(size_t p) const
 		throw out_of_range("Index is not between 0 and n - 1");
 }
 
-WeightedQuickUnionPathCompressionUF::WeightedQuickUnionPathCompressionUF()
-{
-}
 
 WeightedQuickUnionPathCompressionUF::WeightedQuickUnionPathCompressionUF(size_t n)
 	: _parent{ vector<size_t>(n, 0) },
