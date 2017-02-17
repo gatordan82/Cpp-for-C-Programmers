@@ -27,6 +27,12 @@
     <ClInclude Include="WeightedQuickUnionPathCompressionUF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HexPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HexGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HexBoard.cpp">
@@ -36,6 +42,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WeightedQuickUnionPathCompressionUF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HexPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HexGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
