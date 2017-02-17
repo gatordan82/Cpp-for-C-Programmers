@@ -2,6 +2,7 @@
 #define _HEX_BOARD_H
 
 #include "DenseUndirectedGraph.h"
+#include <utility>
 
 enum class TileMarker : char { EMPTY, X, O };
 
@@ -23,6 +24,8 @@ public:
 	TileMarker getMarker(const size_t idx) const;
 	void drawBoard() const;
 	void resetBoard();
+	std::pair<size_t, size_t> northSouthWinTiles() const;
+	std::pair<size_t, size_t> westEastWinTiles() const;
 };
 
 #endif // !_HEX_BOARD_H

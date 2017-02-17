@@ -5,7 +5,6 @@ using namespace std;
 
 const size_t NUM_VIRTUAL_TILES{ 4 };
 
-
 HexBoard::HexBoard(const size_t n)
 	: _board{ DenseUndirectedGraph<TileMarker, size_t>{n * n + NUM_VIRTUAL_TILES, } },
 	_boardSize{ n }
@@ -13,11 +12,14 @@ HexBoard::HexBoard(const size_t n)
 	// connect actual board tiles
 	for (size_t i{ 0 }; i < n * n - 1; i++)
 	{
+		// connect right neighbor
 		if (i % n != n - 1)
 			_board.addEdge(i, i + 1, 1);
 		if (i < n * (n - 1))
 		{
+			// connect down-right neighbor
 			_board.addEdge(i, i + n, 1);
+			// connect down-left neighbor
 			if (i && n != 0)
 				_board.addEdge(i, i + n - 1, 1);
 		}
@@ -32,6 +34,7 @@ HexBoard::HexBoard(const size_t n)
 		_board.addEdge(n * n + 1, j * n, 1);
 		// connect right virtual tile
 		_board.addEdge(n * n + 2, j * n + n - 1, 1);
+		// connect bottom virtual tiles
 		_board.addEdge(n * n + 3, n * (n - 1) + j, 1);
 	}
 }
@@ -47,7 +50,9 @@ size_t HexBoard::boardSize() const
 
 bool HexBoard::isValidIndex(size_t idx) const
 {
-	return (idx > 0 && idx < _boardSize * _boardSize - 1);
+	return (idx > 0 
+		    && idx < _boardSize * _boardSize - 1
+		    && _board.getVertexValue(idx) == TileMarker::EMPTY);
 }
 
 void HexBoard::placeMarker(const TileMarker mark, const size_t idx)
@@ -109,4 +114,14 @@ void HexBoard::resetBoard()
 {
 	for (size_t i{ 0 }; i < _board.V(); i++)
 		_board.setVertexValue(i, TileMarker::EMPTY);
+}
+
+std::pair<size_t, size_t> HexBoard::northSouthWinTiles() const
+{
+	return std::pair<size_t, size_t>{_boardSize * _boardSize, _boardSize * _boardSize + 3};
+}
+
+std::pair<size_t, size_t> HexBoard::westEastWinTiles() const
+{
+	return std::pair<size_t, size_t>{_boardSize * _boardSize + 1, _boardSize * _boardSize + 2};
 }
