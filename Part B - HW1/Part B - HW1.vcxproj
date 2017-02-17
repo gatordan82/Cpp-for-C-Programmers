@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FD32D255-BD11-45B1-9897-7ECA4AC5C95E}</ProjectGuid>
+    <ProjectGuid>{20DACF1A-D5D3-4A23-B34C-0B5812BE4782}</ProjectGuid>
     <RootNamespace>PartBHW1</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -110,7 +110,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Part A - HW 2\IndexMinPriorityQueue.h" />
     <ClInclude Include="DenseUndirectedGraph.h" />
     <ClInclude Include="DijkstraUndirectedShortestPath.h" />
     <ClInclude Include="HexBoard.h" />

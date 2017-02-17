@@ -21,24 +21,21 @@
     <ClInclude Include="DijkstraUndirectedShortestPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part A - HW 2\IndexMinPriorityQueue.h">
+    <ClInclude Include="HexBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WeightedQuickUnionPathCompressionUF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HexBoard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HexBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WeightedQuickUnionPathCompressionUF.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HexBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
