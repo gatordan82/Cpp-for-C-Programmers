@@ -3,8 +3,10 @@
 
 #include "DenseUndirectedGraph.h"
 #include <utility>
+#include <vector>
 
 enum class TileMarker : char { EMPTY, X, O };
+enum class MoveResult : char { LEGAL, OCCUPIED, OUT_OF_BOUNDS };
 
 class HexBoard
 {
@@ -19,13 +21,14 @@ public:
 	~HexBoard();
 
 	size_t boardSize() const;
-	bool isValidIndex(size_t idx) const;
+	MoveResult isValidIndex(size_t idx) const;
 	void placeMarker(const TileMarker mark, const size_t idx);
 	TileMarker getMarker(const size_t idx) const;
 	void drawBoard() const;
 	void resetBoard();
 	std::pair<size_t, size_t> northSouthWinTiles() const;
 	std::pair<size_t, size_t> westEastWinTiles() const;
+	std::vector<size_t> neighbors(size_t idx) const;
 };
 
 #endif // !_HEX_BOARD_H

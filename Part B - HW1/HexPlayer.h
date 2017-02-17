@@ -2,9 +2,9 @@
 #define _HEX_PLAYER_H
 
 #include "HexBoard.h"
+#include "WeightedQuickUnionPathCompressionUF.h"
 
 
-enum class MoveResult : char { LEGAL, OCCUPIED, OUT_OF_BOUNDS};
 
 class HexPlayer
 {
@@ -16,8 +16,8 @@ public:
 	HexPlayer(const TileMarker mark);
 	virtual ~HexPlayer();
 
-	MoveResult placeMarker(HexBoard& board, const size_t idx);
-	virtual bool hasWon(HexBoard& board) const = 0;
+	virtual MoveResult placeMarker(HexBoard& board, const size_t idx) = 0;
+	virtual bool hasWon(HexBoard& board) = 0;
 	virtual void color() const = 0;
 };
 

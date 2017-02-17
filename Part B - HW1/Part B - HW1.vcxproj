@@ -115,12 +115,16 @@
     <ClInclude Include="HexBoard.h" />
     <ClInclude Include="HexGame.h" />
     <ClInclude Include="HexPlayer.h" />
+    <ClInclude Include="HexPlayerNorthSouth.h" />
+    <ClInclude Include="HexPlayerWestEast.h" />
     <ClInclude Include="WeightedQuickUnionPathCompressionUF.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HexBoard.cpp" />
     <ClCompile Include="HexGame.cpp" />
     <ClCompile Include="HexPlayer.cpp" />
+    <ClCompile Include="HexPlayerNorthSouth.cpp" />
+    <ClCompile Include="HexPlayerWestEast.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="WeightedQuickUnionPathCompressionUF.cpp" />
   </ItemGroup>

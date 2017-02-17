@@ -133,7 +133,7 @@ inline std::vector<size_t> DenseUndirectedGraph<NodeValue, EdgeValue>::neighbors
 
 	std::vector<size_t> neighborList{};
 
-	for (const size_t i{ 0 }; i < _vertices; ++i)
+	for (size_t i{ 0 }; i < _vertices; ++i)
 		if (_adjacencyMatrix[x][i] != EdgeValue{} && i != x)
 			neighborList.push_back(i);
 

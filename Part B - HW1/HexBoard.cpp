@@ -48,11 +48,16 @@ size_t HexBoard::boardSize() const
 	return _boardSize;
 }
 
-bool HexBoard::isValidIndex(size_t idx) const
+MoveResult HexBoard::isValidIndex(size_t idx) const
 {
-	return (idx > 0 
-		    && idx < _boardSize * _boardSize - 1
-		    && _board.getVertexValue(idx) == TileMarker::EMPTY);
+	if (idx > 0 && idx < _boardSize * _boardSize - 1)
+	{
+		if (_board.getVertexValue(idx) == TileMarker::EMPTY)
+			return MoveResult::LEGAL;
+		else
+			return MoveResult::OCCUPIED;
+	}
+	else return MoveResult::OUT_OF_BOUNDS;
 }
 
 void HexBoard::placeMarker(const TileMarker mark, const size_t idx)
@@ -124,4 +129,9 @@ std::pair<size_t, size_t> HexBoard::northSouthWinTiles() const
 std::pair<size_t, size_t> HexBoard::westEastWinTiles() const
 {
 	return std::pair<size_t, size_t>{_boardSize * _boardSize + 1, _boardSize * _boardSize + 2};
+}
+
+std::vector<size_t> HexBoard::neighbors(size_t idx) const
+{
+	return _board.neighbors(idx);
 }
