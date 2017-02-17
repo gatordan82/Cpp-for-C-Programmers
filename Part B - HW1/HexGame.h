@@ -11,9 +11,10 @@ private:
 	HexBoard _board;
 	HexPlayerNorthSouth _ns;
 	HexPlayerWestEast _we;
+	bool _blueTurn;
 
 public:
-	HexGame();
+	HexGame(size_t size);
 
 	~HexGame();
 

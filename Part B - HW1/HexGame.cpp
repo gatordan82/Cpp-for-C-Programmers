@@ -3,19 +3,19 @@
 
 using namespace std;
 
-HexGame::HexGame()
-	: _board{ HexBoard{2} },
+HexGame::HexGame(size_t size)
+	: _board{ HexBoard{size} },
 	_ns{ HexPlayerNorthSouth{_board} },
-	_we{ HexPlayerWestEast{_board} }
+	_we{ HexPlayerWestEast{_board} },
+	_blueTurn{ true }
 {
-	cout << "Pick a board size between 2 - 100: " << endl;
-	size_t size{ 2 };
-	cin >> size;
-	
-	HexBoard _board{ size };
 }
 
 
 HexGame::~HexGame()
+{
+}
+
+void HexGame::startGame()
 {
 }

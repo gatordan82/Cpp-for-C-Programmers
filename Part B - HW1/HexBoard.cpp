@@ -5,6 +5,7 @@ using namespace std;
 
 const size_t NUM_VIRTUAL_TILES{ 4 };
 
+
 HexBoard::HexBoard(const size_t n)
 	: _board{ DenseUndirectedGraph<TileMarker, size_t>{n * n + NUM_VIRTUAL_TILES, } },
 	_boardSize{ n }
