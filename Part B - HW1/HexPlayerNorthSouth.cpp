@@ -9,6 +9,15 @@ HexPlayerNorthSouth::HexPlayerNorthSouth(HexBoard& board)
 	: HexPlayer{ TileMarker::O },
 	_uf{WeightedQuickUnionPathCompressionUF{ board.boardSize() * board.boardSize() + NUM_VIRTUAL_TILES } }
 {
+	size_t n{ board.boardSize() };
+	// connect virtual tiles to board edge tiles
+	for (size_t j{ 0 }; j < n; j++)
+	{
+		// connect top virtual tile
+		_uf.join(n * n, j);
+		// connect bottom virtual tiles
+		_uf.join(n * n + 3, n * (n - 1) + j);
+	}
 }
 
 

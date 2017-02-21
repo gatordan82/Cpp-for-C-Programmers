@@ -25,19 +25,6 @@ HexBoard::HexBoard(const size_t n)
 				_board.addEdge(i, i + n - 1, 1);
 		}
 	}
-
-	// connect virtual tiles to board edge tiles
-	for (size_t j{ 0 }; j < n; j++)
-	{
-		// connect top virtual tile
-		_board.addEdge(n * n, j, 1);
-		// connect left virtual tile
-		_board.addEdge(n * n + 1, j * n, 1);
-		// connect right virtual tile
-		_board.addEdge(n * n + 2, j * n + n - 1, 1);
-		// connect bottom virtual tiles
-		_board.addEdge(n * n + 3, n * (n - 1) + j, 1);
-	}
 }
 
 HexBoard::~HexBoard()
@@ -51,7 +38,7 @@ size_t HexBoard::boardSize() const
 
 MoveResult HexBoard::isValidIndex(size_t idx) const
 {
-	if (idx > 0 && idx < _boardSize * _boardSize - 1)
+	if (idx >= 0 && idx < _boardSize * _boardSize)
 	{
 		if (_board.getVertexValue(idx) == TileMarker::EMPTY)
 			return MoveResult::LEGAL;

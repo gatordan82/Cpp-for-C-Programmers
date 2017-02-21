@@ -6,7 +6,7 @@
 #include <vector>
 
 enum class TileMarker : char { EMPTY, X, O };
-enum class MoveResult : char { LEGAL, OCCUPIED, OUT_OF_BOUNDS };
+enum class MoveResult : char { OCCUPIED, OUT_OF_BOUNDS, LEGAL };
 
 class HexBoard
 {

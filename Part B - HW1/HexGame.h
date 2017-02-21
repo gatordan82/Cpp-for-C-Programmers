@@ -13,12 +13,16 @@ private:
 	HexPlayerWestEast _we;
 	bool _blueTurn;
 
+	size_t coordsToIndex(size_t i, size_t j);
+
 public:
+	HexGame() = delete;
 	HexGame(size_t size);
 
 	~HexGame();
 
 	void startGame();
+	bool takeTurn(HexPlayer& player);
 };
 
 #endif
