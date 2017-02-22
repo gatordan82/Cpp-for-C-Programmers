@@ -1,3 +1,15 @@
+// HexGame.cpp
+//
+// C++ for C Programmers, Part B
+// Homework 1: Implement Hex Board
+// 
+// Sets up a game of hex, with a board of size to be input 
+// as a constructor.  Defines the two players (N/S & W/E), and 
+// toggles turns back and forth between the two players.
+//
+// Daniel K. Benjamin
+// 2/19/2017
+
 #include "HexGame.h"
 #include <iostream>
 #include <string>
@@ -6,6 +18,13 @@ using namespace std;
 
 size_t HexGame::coordsToIndex(size_t i, size_t j)
 {
+	// Return a value off the board if either coordinate is invalid
+	if (i < 0
+		|| i >= _board.boardSize()
+		|| j < 0
+		|| j >= _board.boardSize())
+		return (_board.boardSize() * _board.boardSize());
+
 	return j * _board.boardSize() + i;
 }
 
@@ -44,37 +63,28 @@ void HexGame::startGame()
 	}		
 
 	bool gameWon{ false };
-
-
+	
 	while (!gameWon)
 	{
 		gameWon = _blueTurn ? takeTurn(_we) : takeTurn(_ns);
 		if (gameWon)
 		{
-			switch (_blueTurn)
-			{
-			case true:
-				cout << "Congratulations Player 1, you've won." << endl;
-			case false:
-				cout << "Congratulations Player 2, you've won." << endl;
-			}
+			if (_blueTurn)
+				cout << "Congratulations Player 1, you've won.\n" << endl;
+			else
+				cout << "Congratulations Player 2, you've won.\n" << endl;
 		}
 		_blueTurn = !_blueTurn;
-	}
-
-	cout << "Would you like to play again (Y/N)?" << endl;
-	string readyAgain{};
-	cin >> readyAgain;
-	if (readyAgain == "Y" || readyAgain == "y")
-	{
-		_board.resetBoard();
-		startGame();
 	}
 }
 
 bool HexGame::takeTurn(HexPlayer& player)
 {
-	cout << "Please enter a tile location: row column." << endl;
+	if (_blueTurn)
+		cout << "Player 1's turn (X)." << endl;
+	else
+		cout << "Player 2's turn (O)." << endl;
+	cout << "Please enter a tile location: ROW COLUMN." << endl;
 	size_t j{0};
 	size_t i{0};
 
@@ -100,9 +110,7 @@ bool HexGame::takeTurn(HexPlayer& player)
 		}
 	}
 	
-	if (_blueTurn) _board.placeMarker(TileMarker::X, index);
-	else           _board.placeMarker(TileMarker::O, index);
-
+	player.placeMarker(_board, index);
 	_board.drawBoard();
 
 	return player.hasWon(_board);

@@ -1,10 +1,21 @@
+// HexBoard.cpp
+//
+// C++ for C Programmers, Part B
+// Homework 1: Implement Hex Board
+// 
+// Hex board representation.  Allows marker placement, and to draw
+// an ASCII representation of the board to the console.  Tiles are 
+// stored in a DenseUndirectedGraph.
+//
+// Daniel K. Benjamin
+// 2/19/2017
+
 #include "HexBoard.h"
 #include <iostream>
 
 using namespace std;
 
 const size_t NUM_VIRTUAL_TILES{ 4 };
-
 
 HexBoard::HexBoard(const size_t n)
 	: _board{ DenseUndirectedGraph<TileMarker, size_t>{n * n + NUM_VIRTUAL_TILES, } },
@@ -79,7 +90,7 @@ void HexBoard::drawBoard() const
 			break;
 		}
 
-		
+		// Build the leading spaces & angled stick connections
 		if (i % _boardSize == _boardSize - 1 && i != _boardSize * _boardSize - 1)
 		{
 			cout << endl;

@@ -111,7 +111,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DenseUndirectedGraph.h" />
-    <ClInclude Include="DijkstraUndirectedShortestPath.h" />
     <ClInclude Include="HexBoard.h" />
     <ClInclude Include="HexGame.h" />
     <ClInclude Include="HexPlayer.h" />

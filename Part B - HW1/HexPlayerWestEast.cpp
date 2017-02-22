@@ -1,3 +1,14 @@
+// HexPlayerWestEast.cpp
+//
+// C++ for C Programmers, Part B
+// Homework 1: Implement Hex Board
+// 
+// Hex player that wins by connecting the left and right edges.
+// Connections are stored by an efficient disjoint-set structure.
+//
+// Daniel K. Benjamin
+// 2/19/2017
+
 #include "HexPlayerWestEast.h"
 #include <iostream>
 

@@ -1,9 +1,19 @@
+// WeightedQuickUnionPathCompressionUF.cpp
+//
+// C++ for C Programmers, Part B
+// Homework 1: Implement Hex Board
+// 
+// Disjoint set data structure.  Uses weighting to determine
+// which branch of two trees in the forest to merge to.  Uses
+// path compression to keep each tree flat to within lg*N.
+//
+// Daniel K. Benjamin
+// 2/19/2017
+
 #include "WeightedQuickUnionPathCompressionUF.h"
 #include <stdexcept>
 
 using namespace std;
-
-
 
 void WeightedQuickUnionPathCompressionUF::validate(size_t p) const
 {

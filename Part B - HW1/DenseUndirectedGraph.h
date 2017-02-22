@@ -1,3 +1,17 @@
+// DenseUndirectedGraph.h
+//
+// C++ for C Programmers, Part B
+// Homework 1: Implement Hex Board
+// 
+// A templated dense undirected graph.  This uses an adjacency matrix for quick 
+// storage and lookup of the edge values.  Vertex values are stored as well, but
+// as a separate vector.  Multiple edges between the same pair of vertices is not
+// allowed in this representation.
+//
+// Daniel K. Benjamin
+// 2/19/2017
+
+
 #ifndef _DENSE_UNDIRECTED_GRAPH_H
 #define	_DENSE_UNDIRECTED_GRAPH_H
 
@@ -30,18 +44,31 @@ public:
 	DenseUndirectedGraph& operator=(const DenseUndirectedGraph& g);
 
 	// Graph API methods
+
+	// Number of vertices
 	size_t V() const;
+	// Number of edges
 	size_t E() const;
+	// Test if two vertices are connected by an edge
 	bool areAdjacent(size_t x, size_t y) const;
+	// The list of neighbors for a given vertex
 	std::vector<size_t> neighbors(size_t x) const;
+	// Number of edges coming from a given vertex
 	size_t degree(size_t x) const;
+	// Adds an edge between two vertices
 	void addEdge(size_t x, size_t y, EdgeValue edgeValue);
+	// Removes an edge between two vertices
 	void deleteEdge(size_t x, size_t y);
+	// Returns the value for an edge connecting two vertices
 	EdgeValue getEdgeValue(size_t x, size_t y) const;
+	// Change the value for an edge connecting two vertices
 	void setEdgeValue(size_t x, size_t y, EdgeValue edgeValue);
+	// Returns the value associated with a vertex
 	NodeValue getVertexValue(size_t x) const;
+	// Change the value for a vertex
 	void setVertexValue(size_t x, NodeValue vertexValue);
 
+	// Output stream friend function that shows all edges, and vertex endpoints
 	template<class NodeValue, class EdgeValue>
 	friend std::ostream& operator<<(std::ostream& os, const DenseUndirectedGraph<NodeValue, EdgeValue>& g);
 };

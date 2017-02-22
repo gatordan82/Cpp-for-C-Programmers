@@ -1,3 +1,14 @@
+// HexPlayerNorthSouth.cpp
+//
+// C++ for C Programmers, Part B
+// Homework 1: Implement Hex Board
+// 
+// Hex player that wins by connecting the top and bottom edges.
+// Connections are stored by an efficient disjoint-set structure.
+//
+// Daniel K. Benjamin
+// 2/19/2017
+
 #include "HexPlayerNorthSouth.h"
 #include <iostream>
 
@@ -19,7 +30,6 @@ HexPlayerNorthSouth::HexPlayerNorthSouth(HexBoard& board)
 		_uf.join(n * n + 3, n * (n - 1) + j);
 	}
 }
-
 
 HexPlayerNorthSouth::~HexPlayerNorthSouth()
 {
