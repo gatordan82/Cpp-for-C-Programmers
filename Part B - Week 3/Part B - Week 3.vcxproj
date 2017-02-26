@@ -18,9 +18,29 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BinaryNode.h" />
+    <ClInclude Include="IdNode.h" />
+    <ClInclude Include="IntNode.h" />
+    <ClInclude Include="LeafNode.h" />
+    <ClInclude Include="my_container.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="UnaryNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BinaryNode.cpp" />
+    <ClCompile Include="IdNode.cpp" />
+    <ClCompile Include="IntNode.cpp" />
+    <ClCompile Include="LeafNode.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="node.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="UnaryNode.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B3C7EB83-4A92-45F0-8CB7-E1BC5059CD42}</ProjectGuid>
-    <RootNamespace>OtherStudentsProjects</RootNamespace>
+    <ProjectGuid>{2B8B92E5-362F-4F12-B3B2-BC4FCF9C605B}</ProjectGuid>
+    <RootNamespace>PartBWeek3</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
