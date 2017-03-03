@@ -15,51 +15,63 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Part B - HW1\DenseUndirectedGraph.h">
+    <ClInclude Include="DenseUndirectedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\DijkstraUndirectedShortestPath.h">
+    <ClInclude Include="DijkstraUndirectedShortestPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\HexBoard.h">
+    <ClInclude Include="HexBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\HexGame.h">
+    <ClInclude Include="HexGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\HexPlayer.h">
+    <ClInclude Include="HexPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\HexPlayerNorthSouth.h">
+    <ClInclude Include="HexPlayerNorthSouth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\HexPlayerWestEast.h">
+    <ClInclude Include="HexPlayerWestEast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Part B - HW1\WeightedQuickUnionPathCompressionUF.h">
+    <ClInclude Include="WeightedQuickUnionPathCompressionUF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HexAIPlayerNorthSouth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HexAIPlayerWestEast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Part B - HW1\HexBoard.cpp">
+    <ClCompile Include="HexBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Part B - HW1\HexGame.cpp">
+    <ClCompile Include="HexGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Part B - HW1\HexPlayer.cpp">
+    <ClCompile Include="HexPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Part B - HW1\HexPlayerNorthSouth.cpp">
+    <ClCompile Include="HexPlayerNorthSouth.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Part B - HW1\HexPlayerWestEast.cpp">
+    <ClCompile Include="HexPlayerWestEast.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Part B - HW1\Main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Part B - HW1\WeightedQuickUnionPathCompressionUF.cpp">
+    <ClCompile Include="WeightedQuickUnionPathCompressionUF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HexAIPlayerNorthSouth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HexAIPlayerWestEast.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,32 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DenseUndirectedGraph.h" />
-    <ClInclude Include="DijkstraUndirectedShortestPath.h" />
-    <ClInclude Include="HexAIPlayerNorthSouth.h" />
-    <ClInclude Include="HexAIPlayerWestEast.h" />
-    <ClInclude Include="HexBoard.h" />
-    <ClInclude Include="HexGame.h" />
-    <ClInclude Include="HexPlayer.h" />
-    <ClInclude Include="HexPlayerNorthSouth.h" />
-    <ClInclude Include="HexPlayerWestEast.h" />
-    <ClInclude Include="WeightedQuickUnionPathCompressionUF.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="HexAIPlayerNorthSouth.cpp" />
-    <ClCompile Include="HexAIPlayerWestEast.cpp" />
-    <ClCompile Include="HexBoard.cpp" />
-    <ClCompile Include="HexGame.cpp" />
-    <ClCompile Include="HexPlayer.cpp" />
-    <ClCompile Include="HexPlayerNorthSouth.cpp" />
-    <ClCompile Include="HexPlayerWestEast.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="WeightedQuickUnionPathCompressionUF.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4C7149C6-FBF2-4C66-B595-8A34D757A31E}</ProjectGuid>
-    <RootNamespace>PartBHW2</RootNamespace>
+    <ProjectGuid>{52EBFCF6-C675-41AC-8B4B-E0858A12C267}</ProjectGuid>
+    <RootNamespace>PartBWeek4</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
