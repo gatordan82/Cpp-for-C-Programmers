@@ -29,11 +29,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - Week 1", "Part B -
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - Week 2", "Part B - Week 2\Part B - Week 2.vcxproj", "{4D2B7921-D793-4C25-B45B-16405CE8394F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - HW1", "Part B - HW1\Part B - HW1.vcxproj", "{20DACF1A-D5D3-4A23-B34C-0B5812BE4782}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - HW 1", "Part B - HW1\Part B - HW1.vcxproj", "{20DACF1A-D5D3-4A23-B34C-0B5812BE4782}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - Week 3", "Part B - Week 3\Part B - Week 3.vcxproj", "{2B8B92E5-362F-4F12-B3B2-BC4FCF9C605B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - Week 4", "Part B - Week 4\Part B - Week 4.vcxproj", "{52EBFCF6-C675-41AC-8B4B-E0858A12C267}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Part B - HW 2", "Part B - HW 2\Part B - HW 2.vcxproj", "{4C7149C6-FBF2-4C66-B595-8A34D757A31E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,14 @@ Global
 		{52EBFCF6-C675-41AC-8B4B-E0858A12C267}.Release|x64.Build.0 = Release|x64
 		{52EBFCF6-C675-41AC-8B4B-E0858A12C267}.Release|x86.ActiveCfg = Release|Win32
 		{52EBFCF6-C675-41AC-8B4B-E0858A12C267}.Release|x86.Build.0 = Release|Win32
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Debug|x64.ActiveCfg = Debug|x64
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Debug|x64.Build.0 = Debug|x64
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Debug|x86.ActiveCfg = Debug|Win32
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Debug|x86.Build.0 = Debug|Win32
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Release|x64.ActiveCfg = Release|x64
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Release|x64.Build.0 = Release|x64
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Release|x86.ActiveCfg = Release|Win32
+		{4C7149C6-FBF2-4C66-B595-8A34D757A31E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

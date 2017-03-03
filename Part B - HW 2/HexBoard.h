@@ -55,7 +55,7 @@ public:
 	std::pair<size_t, size_t> westEastWinTiles() const;
 	// Returns the neighbor tiles for a given tile index
 	std::vector<size_t> neighbors(size_t idx) const;
-
+	// Returns the tiles with no markers yet
 	std::vector<size_t> emptyTiles() const;
 };
 
