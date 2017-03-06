@@ -29,7 +29,7 @@ private:
 
 public:
 	// Constructors
-	HexBoard() = delete;
+	HexBoard();
 	HexBoard(const size_t n);
 
 	// Destructor

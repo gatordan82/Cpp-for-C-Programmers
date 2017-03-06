@@ -16,6 +16,11 @@ using namespace std;
 
 const size_t NUM_VIRTUAL_TILES{ 4 };
 
+HexPlayerNorthSouth::HexPlayerNorthSouth()
+	: HexPlayerNorthSouth{ HexBoard{} }
+{
+}
+
 HexPlayerNorthSouth::HexPlayerNorthSouth(HexBoard& board)
 	: HexPlayer{ TileMarker::O },
 	_uf{WeightedQuickUnionPathCompressionUF{ board.boardSize() * board.boardSize() + NUM_VIRTUAL_TILES } }

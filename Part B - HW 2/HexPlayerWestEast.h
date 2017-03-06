@@ -23,7 +23,7 @@ private:
 
 public:
 	// Constructors
-	HexPlayerWestEast() = delete;
+	HexPlayerWestEast();
 	HexPlayerWestEast(HexBoard& board);
 
 	// Destructor

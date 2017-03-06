@@ -40,6 +40,18 @@ HexGame::HexGame(size_t size)
 	cout << "Player 2 goes top to bottom, with marker O." << endl;
 }
 
+HexGame::HexGame(size_t size, bool useAI, size_t playerNumber)
+	: _board{ HexBoard{ size } },
+	_ns{},
+	_we{},
+	_blueTurn{ true }
+{
+	cout << "Starting new Hex game with board of size " << size << endl;
+
+	cout << "\nPlayer 1 goes left to right, with marker X." << endl;
+	cout << "Player 2 goes top to bottom, with marker O." << endl;
+}
+
 
 HexGame::~HexGame()
 {

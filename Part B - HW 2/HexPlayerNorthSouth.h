@@ -22,7 +22,7 @@ private:
 
 public:
 	// Constructors
-	HexPlayerNorthSouth() = delete;
+	HexPlayerNorthSouth();
 	HexPlayerNorthSouth(HexBoard& board);
 
 	// Destructor

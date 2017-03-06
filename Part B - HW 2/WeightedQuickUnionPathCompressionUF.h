@@ -29,9 +29,12 @@ public:
 	// Constructors
 	WeightedQuickUnionPathCompressionUF() = delete;
 	WeightedQuickUnionPathCompressionUF(size_t n);
+	WeightedQuickUnionPathCompressionUF(WeightedQuickUnionPathCompressionUF& uf);
 
 	// Destructor
 	~WeightedQuickUnionPathCompressionUF();
+
+	WeightedQuickUnionPathCompressionUF& operator=(WeightedQuickUnionPathCompressionUF& uf);
 
 	// Number of trees in the forest
 	size_t count() const;

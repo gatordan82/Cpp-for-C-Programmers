@@ -21,7 +21,7 @@ class HexGame
 {
 private:
 	HexBoard _board;
-	HexPlayerNorthSouth _ns;
+	HexPlayer _ns;
 	HexPlayerWestEast _we;
 	bool _blueTurn;
 
@@ -32,6 +32,7 @@ public:
 	// Constructors
 	HexGame() = delete;
 	HexGame(size_t size);
+	HexGame(size_t size, bool useAI, size_t playerNumber);
 
 	// Destructor
 	~HexGame();

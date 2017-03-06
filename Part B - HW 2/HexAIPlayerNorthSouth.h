@@ -1,10 +1,7 @@
 #ifndef _HEX_AI_PLAYER_NORTH_SOUTH_H
 #define _HEX_AI_PLAYER_NORTH_SOUTH_H
 
-
 #include "HexPlayer.h"
-
-
 
 class HexAIPlayerNorthSouth :
 	public HexPlayer
@@ -15,11 +12,13 @@ private:
 	MoveResult placeMarker(HexBoard& board, const size_t idx);
 
 	size_t bestMoveTile(HexBoard& board);
+	WeightedQuickUnionPathCompressionUF buildMCIteration(HexBoard& board, size_t nextMoveIdx);
+	size_t runMCSim(HexBoard& board, size_t nextMoveIdx);
 
 
 public:
 	// Constructors
-	HexAIPlayerNorthSouth() = delete;
+	HexAIPlayerNorthSouth();
 	HexAIPlayerNorthSouth(HexBoard& board);
 
 	// Destructor

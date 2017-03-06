@@ -12,6 +12,19 @@
 
 #include "HexPlayer.h"
 
+WeightedQuickUnionPathCompressionUF& HexPlayer::joinNeighbors(WeightedQuickUnionPathCompressionUF& uf, 
+															  HexBoard& board, 
+														      size_t tile)
+{
+	for (const auto& neighborTile : board.neighbors(tile))
+	{
+		if (board.getMarker(tile) == _mark)
+			uf.join(neighborTile, tile);
+	}
+
+	return uf;
+}
+
 HexPlayer::HexPlayer(const TileMarker mark)
 	: _mark{ mark }
 {

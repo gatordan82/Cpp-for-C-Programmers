@@ -18,8 +18,9 @@
 
 class HexPlayer
 {
-private:
+protected:
 	TileMarker _mark;
+	WeightedQuickUnionPathCompressionUF& joinNeighbors(WeightedQuickUnionPathCompressionUF& uf, HexBoard& board, size_t tile);
 
 public:
 	// Constructors

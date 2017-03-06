@@ -32,9 +32,28 @@ WeightedQuickUnionPathCompressionUF::WeightedQuickUnionPathCompressionUF(size_t 
 		_parent[i] = _size[i] = i;
 }
 
+WeightedQuickUnionPathCompressionUF::WeightedQuickUnionPathCompressionUF(WeightedQuickUnionPathCompressionUF& uf)
+	: _parent{ uf._parent },
+	_size{ uf._size },
+	_count{ uf._count }
+{
+}
+
 
 WeightedQuickUnionPathCompressionUF::~WeightedQuickUnionPathCompressionUF()
 {
+}
+
+WeightedQuickUnionPathCompressionUF& WeightedQuickUnionPathCompressionUF::operator=(WeightedQuickUnionPathCompressionUF& uf)
+{
+	if (this != &uf)
+	{
+		_parent = uf._parent;
+		_size = uf._size;
+		_count = uf._count;
+	}
+
+	return *this;
 }
 
 size_t WeightedQuickUnionPathCompressionUF::count() const
