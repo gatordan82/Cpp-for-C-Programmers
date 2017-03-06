@@ -30,8 +30,8 @@ size_t HexGame::coordsToIndex(size_t i, size_t j)
 
 HexGame::HexGame(size_t size)
 	: _board{ HexBoard{size} },
-	_ns{ HexPlayerNorthSouth{_board} },
-	_we{ HexPlayerWestEast{_board} },
+	_nsPtr{ std::unique_ptr<HexPlayerNorthSouth>(new HexPlayerNorthSouth{_board}) },
+	_wePtr{ std::unique_ptr<HexPlayerWestEast>(new HexPlayerWestEast{ _board }) },
 	_blueTurn{ true },
 	_aiPlayer{AIPlayerNumber::NONE}
 {
@@ -43,29 +43,33 @@ HexGame::HexGame(size_t size)
 
 HexGame::HexGame(size_t size, size_t humanPlayerNumber)
 	: _board{ HexBoard{ size } },
-	_ns{ HexPlayerNorthSouth{} },
-	_we{ HexPlayerWestEast{} },
+	_nsPtr{ std::unique_ptr<HexPlayerNorthSouth>(new HexPlayerNorthSouth{ _board }) },
+	_wePtr{ std::unique_ptr<HexPlayerWestEast>(new HexPlayerWestEast{ _board }) },
 	_blueTurn{ true },
-	_aiPlayer{}
+	_aiPlayer{AIPlayerNumber::X}
 {
-	if (humanPlayerNumber == 1)
-	{
-		_ns = HexAIPlayerNorthSouth{ _board };
-		_we = HexPlayerWestEast{ _board };
-		_aiPlayer = AIPlayerNumber::O;
-	}
-	else
-	{
-		_ns = HexPlayerNorthSouth{ _board };
-		_we = HexAIPlayerWestEast{ _board };
-		_aiPlayer = AIPlayerNumber::X;
-	}
-
+	_nsPtr = dynamic_cast<std::unique_ptr<HexAIPlayerNorthSouth>>(_nsPtr);
 	std::cout << "Starting new Hex game with board of size " << size << endl;
 
 	std::cout << "\nPlayer 1 goes left to right, with marker X." << endl;
 	std::cout << "Player 2 goes top to bottom, with marker O." << endl;
 }
+
+//HexGame::HexGame(size_t size, bool humanIsPlayer1, size_t humanPlayerNumber)
+//	: _board{ HexBoard{size} },
+//	_ns{ HexAIPlayerNorthSouth{_board} },
+//	_we{ HexPlayerWestEast{_board} },
+//	_blueTurn{ true },
+//	_aiPlayer{ AIPlayerNumber::O }
+//{
+//
+//	std::cout << "Starting new Hex game with board of size " << size << endl;
+//
+//	std::cout << "\nPlayer 1 goes left to right, with marker X." << endl;
+//	std::cout << "Player 2 goes top to bottom, with marker O." << endl;
+//}
+
+
 
 
 HexGame::~HexGame()
@@ -107,7 +111,7 @@ void HexGame::startGame()
 
 bool HexGame::takeTurn(HexPlayer& player)
 {
-	if (_aiPlayer == AIPlayerNumber::NONE)
+	if (_aiPlayer == AIPlayerNumber::NONE || (_blueTurn && _aiPlayer == AIPlayerNumber::O))
 		return takeHumanTurn(player);
 	else
 		return takeAITurn(player);

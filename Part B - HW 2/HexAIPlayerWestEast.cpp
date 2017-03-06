@@ -92,24 +92,15 @@ HexAIPlayerWestEast::HexAIPlayerWestEast()
 }
 
 HexAIPlayerWestEast::HexAIPlayerWestEast(HexBoard& board)
-	: HexPlayerWestEast{ board },
-	_uf{ WeightedQuickUnionPathCompressionUF{ board.boardSize() * board.boardSize() + NUM_VIRTUAL_TILES } }
+	: HexPlayerWestEast{ board }
 {
-	size_t n{ board.boardSize() };
-	// connect virtual tiles to board edge tiles
-	for (size_t j{ 0 }; j < n; j++)
-	{
-		// connect left virtual tile
-		_uf.join(n * n + 1, j * n);
-		// connect right virtual tile
-		_uf.join(n * n + 2, j * n + n - 1);
-	}
 }
 
 
 HexAIPlayerWestEast::~HexAIPlayerWestEast()
 {
 }
+
 
 MoveResult HexAIPlayerWestEast::placeMarker(HexBoard & board, const size_t idx)
 {

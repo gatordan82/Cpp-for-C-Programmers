@@ -45,7 +45,10 @@ HexGame startGamePrompt()
 		size_t humanPlayerNumber{};
 		cout << "Do you want to be Player 1 or 2?" << endl;
 		cin >> humanPlayerNumber;
-		return HexGame{ size, humanPlayerNumber };
+		if (humanPlayerNumber == 1)
+			return HexGame{ size, true, 1 };
+		else
+			return HexGame{ size, 2 };
 	}
 
 }

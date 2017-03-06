@@ -18,6 +18,7 @@
 #include "HexAIPlayerNorthSouth.h"
 #include "HexPlayerWestEast.h"
 #include "HexAIPlayerWestEast.h"
+#include <memory>
 
 enum class AIPlayerNumber : char { NONE, X, O };
 
@@ -25,8 +26,8 @@ class HexGame
 {
 private:
 	HexBoard _board;
-	HexPlayerNorthSouth _ns;
-	HexPlayerWestEast _we;
+	std::unique_ptr<HexPlayerNorthSouth> _nsPtr;
+	std::unique_ptr<HexPlayerWestEast> _wePtr;
 	bool _blueTurn;
 	AIPlayerNumber _aiPlayer;
 
@@ -41,6 +42,7 @@ public:
 	HexGame() = delete;
 	HexGame(size_t size);
 	HexGame(size_t size, size_t humanPlayerNumber);
+	//HexGame(size_t size, bool humanIsPlayer1, size_t humanPlayerNumber);
 
 	// Destructor
 	~HexGame();

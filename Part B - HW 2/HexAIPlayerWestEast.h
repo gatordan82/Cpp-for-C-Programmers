@@ -7,8 +7,6 @@ class HexAIPlayerWestEast :
 	public HexPlayerWestEast
 {
 private:
-	WeightedQuickUnionPathCompressionUF _uf;
-
 	size_t bestMoveTile(HexBoard& board);
 	WeightedQuickUnionPathCompressionUF buildMCIteration(HexBoard& board, size_t nextMoveIdx);
 	size_t runMCSim(HexBoard& board, size_t nextMoveIdx);
@@ -23,7 +21,6 @@ public:
 	~HexAIPlayerWestEast();
 
 	// Place a marker on the board, and make all adjacent marker connections
-	
 
 	MoveResult placeMarker(HexBoard& board, const size_t idx);
 };

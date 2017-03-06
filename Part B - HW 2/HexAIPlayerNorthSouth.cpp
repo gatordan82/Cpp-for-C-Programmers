@@ -85,24 +85,19 @@ HexAIPlayerNorthSouth::HexAIPlayerNorthSouth()
 }
 
 HexAIPlayerNorthSouth::HexAIPlayerNorthSouth(HexBoard& board)
-	: HexPlayerNorthSouth{ board },
-	_uf{ WeightedQuickUnionPathCompressionUF{ board.boardSize() * board.boardSize() + NUM_VIRTUAL_TILES } }
+	: HexPlayerNorthSouth{ board }
 {
-	size_t n{ board.boardSize() };
-	// connect virtual tiles to board edge tiles
-	for (size_t j{ 0 }; j < n; j++)
-	{
-		// connect top virtual tile
-		_uf.join(n * n, j);
-		// connect bottom virtual tiles
-		_uf.join(n * n + 3, n * (n - 1) + j);
-	}
+}
+
+HexAIPlayerNorthSouth::HexAIPlayerNorthSouth(HexPlayerNorthSouth& player)
+{
 }
 
 
 HexAIPlayerNorthSouth::~HexAIPlayerNorthSouth()
 {
 }
+
 
 MoveResult HexAIPlayerNorthSouth::placeMarker(HexBoard& board, const size_t idx)
 {

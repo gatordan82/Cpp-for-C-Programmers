@@ -18,7 +18,7 @@
 class HexPlayerWestEast :
 	public HexPlayer
 {
-private:
+protected:
 	WeightedQuickUnionPathCompressionUF _uf;
 
 public:

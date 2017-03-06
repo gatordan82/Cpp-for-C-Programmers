@@ -7,8 +7,6 @@ class HexAIPlayerNorthSouth :
 	public HexPlayerNorthSouth
 {
 private:
-	WeightedQuickUnionPathCompressionUF _uf;
-
 	size_t bestMoveTile(HexBoard& board);
 	WeightedQuickUnionPathCompressionUF buildMCIteration(HexBoard& board, size_t nextMoveIdx);
 	size_t runMCSim(HexBoard& board, size_t nextMoveIdx);
@@ -19,10 +17,11 @@ public:
 	// Constructors
 	HexAIPlayerNorthSouth();
 	HexAIPlayerNorthSouth(HexBoard& board);
+	HexAIPlayerNorthSouth(HexPlayerNorthSouth& player);
 
 	// Destructor
 	~HexAIPlayerNorthSouth();
-
+	
 	MoveResult placeMarker(HexBoard& board, const size_t idx);
 
 };
