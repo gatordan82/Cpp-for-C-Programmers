@@ -40,46 +40,23 @@ HexGame startGamePrompt()
 		break;
 	}
 
-	size_t humanPlayerNumber{};
-	cout << "Do you want to be Player 1 or 2?" << endl;
-	cin >> humanPlayerNumber;
-	switch (humanPlayerNumber)
+	if (useAI)
 	{
-	case 1:
-		HexGame{ size, useAI, humanPlayerNumber };
-		break;
-	case 'n': case 'N':
-		return HexGame{ size };
-	default:
-		cout << "Sorry, I didn't understand your input... use AI (Y/N)?" << endl;
-		break;
+		size_t humanPlayerNumber{};
+		cout << "Do you want to be Player 1 or 2?" << endl;
+		cin >> humanPlayerNumber;
+		return HexGame{ size, humanPlayerNumber };
 	}
 
 }
 
 int main()
 {
-	
-
 	srand(time(0));
 
 	size_t size{};
 
-	cout << "What size board do you want to play on?" << endl;
-	cin >> size;
-
-	char useAI{};
-	cout << "Do you want to play against the computer (Y/N)?" << endl;
-	cin >> useAI;
-
-	switch (useAI)
-	{
-	case 'y': case 'Y':
-		
-	}
-
-
-	HexGame newGame{ size };
+	HexGame newGame{ startGamePrompt() };
 	newGame.startGame();
 
 	cin.get();

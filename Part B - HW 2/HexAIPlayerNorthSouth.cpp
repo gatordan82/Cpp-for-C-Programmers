@@ -104,9 +104,31 @@ HexAIPlayerNorthSouth::~HexAIPlayerNorthSouth()
 {
 }
 
-MoveResult HexAIPlayerNorthSouth::makeNextMove(HexBoard& board)
+MoveResult HexAIPlayerNorthSouth::placeMarker(HexBoard& board, const size_t idx)
 {
-	size_t bestTile{ bestMoveTile(board) };
-	return placeMarker(board, bestTile);
+	size_t mcIdx = makeNextMove(board);
+
+	switch (board.isValidIndex(mcIdx))
+	{
+	case MoveResult::LEGAL:
+	{
+		board.placeMarker(TileMarker::O, mcIdx);
+		for (const auto& tile : board.neighbors(mcIdx))
+		{
+			if (board.getMarker(tile) == TileMarker::O)
+				_uf.join(mcIdx, tile);
+		}
+		return MoveResult::LEGAL;
+	}
+	case MoveResult::OCCUPIED:
+		return MoveResult::OCCUPIED;
+	case MoveResult::OUT_OF_BOUNDS:
+		return MoveResult::OUT_OF_BOUNDS;
+	}
+}
+
+size_t HexAIPlayerNorthSouth::makeNextMove(HexBoard& board)
+{
+	return bestMoveTile(board);
 }
 

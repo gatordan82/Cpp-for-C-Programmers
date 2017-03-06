@@ -13,10 +13,9 @@ using namespace std;
 
 
 
-MoveResult HexAIPlayerWestEast::makeNextMove(HexBoard& board)
+size_t HexAIPlayerWestEast::makeNextMove(HexBoard& board)
 {
-	size_t bestTile{ bestMoveTile(board) };
-	return placeMarker(board, bestTile);
+	return bestMoveTile(board);
 }
 
 
@@ -110,4 +109,27 @@ HexAIPlayerWestEast::HexAIPlayerWestEast(HexBoard& board)
 
 HexAIPlayerWestEast::~HexAIPlayerWestEast()
 {
+}
+
+MoveResult HexAIPlayerWestEast::placeMarker(HexBoard & board, const size_t idx)
+{
+	size_t mcIdx = makeNextMove(board);
+
+	switch (board.isValidIndex(mcIdx))
+	{
+	case MoveResult::LEGAL:
+	{
+		board.placeMarker(TileMarker::X, mcIdx);
+		for (const auto& tile : board.neighbors(mcIdx))
+		{
+			if (board.getMarker(tile) == TileMarker::O)
+				_uf.join(mcIdx, tile);
+		}
+		return MoveResult::LEGAL;
+	}
+	case MoveResult::OCCUPIED:
+		return MoveResult::OCCUPIED;
+	case MoveResult::OUT_OF_BOUNDS:
+		return MoveResult::OUT_OF_BOUNDS;
+	}
 }

@@ -15,7 +15,11 @@
 
 #include "HexBoard.h"
 #include "HexPlayerNorthSouth.h"
+#include "HexAIPlayerNorthSouth.h"
 #include "HexPlayerWestEast.h"
+#include "HexAIPlayerWestEast.h"
+
+enum class AIPlayerNumber : char { NONE, X, O };
 
 class HexGame
 {
@@ -24,15 +28,19 @@ private:
 	HexPlayerNorthSouth _ns;
 	HexPlayerWestEast _we;
 	bool _blueTurn;
+	AIPlayerNumber _aiPlayer;
 
 	// Changes user input ordered pair to index
 	size_t coordsToIndex(size_t i, size_t j);
+
+	bool takeHumanTurn(HexPlayer& player);
+	bool takeAITurn(HexPlayer& player);
 
 public:
 	// Constructors
 	HexGame() = delete;
 	HexGame(size_t size);
-	HexGame(size_t size, bool useAI, size_t playerNumber);
+	HexGame(size_t size, size_t humanPlayerNumber);
 
 	// Destructor
 	~HexGame();
