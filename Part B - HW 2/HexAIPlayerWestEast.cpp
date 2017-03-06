@@ -11,22 +11,7 @@ const size_t NUM_MC_ITERATIONS{ 100 };
 
 using namespace std;
 
-MoveResult HexAIPlayerWestEast::placeMarker(HexBoard& board, const size_t idx)
-{
-	switch (board.isValidIndex(idx))
-	{
-	case MoveResult::LEGAL:
-	{
-		board.placeMarker(TileMarker::X, idx);
-		joinNeighbors(_uf, board, idx);
-		return MoveResult::LEGAL;
-	}
-	case MoveResult::OCCUPIED:
-		return MoveResult::OCCUPIED;
-	case MoveResult::OUT_OF_BOUNDS:
-		return MoveResult::OUT_OF_BOUNDS;
-	}
-}
+
 
 MoveResult HexAIPlayerWestEast::makeNextMove(HexBoard& board)
 {
@@ -34,15 +19,6 @@ MoveResult HexAIPlayerWestEast::makeNextMove(HexBoard& board)
 	return placeMarker(board, bestTile);
 }
 
-bool HexAIPlayerWestEast::hasWon(HexBoard& board)
-{
-	return _uf.areConnected(board.westEastWinTiles().first, board.westEastWinTiles().second);
-}
-
-void HexAIPlayerWestEast::color() const
-{
-	cout << "Blue Player (X)" << endl;
-}
 
 size_t HexAIPlayerWestEast::bestMoveTile(HexBoard& board)
 {
@@ -117,7 +93,7 @@ HexAIPlayerWestEast::HexAIPlayerWestEast()
 }
 
 HexAIPlayerWestEast::HexAIPlayerWestEast(HexBoard& board)
-	: HexPlayer{ TileMarker::X },
+	: HexPlayerWestEast{ board },
 	_uf{ WeightedQuickUnionPathCompressionUF{ board.boardSize() * board.boardSize() + NUM_VIRTUAL_TILES } }
 {
 	size_t n{ board.boardSize() };

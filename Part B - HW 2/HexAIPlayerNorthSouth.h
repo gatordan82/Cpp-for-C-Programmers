@@ -1,10 +1,10 @@
 #ifndef _HEX_AI_PLAYER_NORTH_SOUTH_H
 #define _HEX_AI_PLAYER_NORTH_SOUTH_H
 
-#include "HexPlayer.h"
+#include "HexPlayerNorthSouth.h"
 
 class HexAIPlayerNorthSouth :
-	public HexPlayer
+	public HexPlayerNorthSouth
 {
 private:
 	WeightedQuickUnionPathCompressionUF _uf;
@@ -25,10 +25,7 @@ public:
 	~HexAIPlayerNorthSouth();
 
 	MoveResult makeNextMove(HexBoard& board);
-	// Check if the two appropriate edges are connected
-	bool hasWon(HexBoard& board);
-	// Output the player color to the console
-	void color() const;
+
 };
 
 #endif // !_HEX_AI_PLAYER_NORTH_SOUTH_H

@@ -11,22 +11,6 @@ const size_t NUM_MC_ITERATIONS{ 100 };
 
 using namespace std;
 
-MoveResult HexAIPlayerNorthSouth::placeMarker(HexBoard& board, const size_t idx)
-{
-	switch (board.isValidIndex(idx))
-	{
-	case MoveResult::LEGAL:
-	{
-		board.placeMarker(TileMarker::O, idx);
-		joinNeighbors(_uf, board, idx);
-		return MoveResult::LEGAL;
-	}
-	case MoveResult::OCCUPIED:
-		return MoveResult::OCCUPIED;
-	case MoveResult::OUT_OF_BOUNDS:
-		return MoveResult::OUT_OF_BOUNDS;
-	}
-}
 
 size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 {
@@ -101,7 +85,7 @@ HexAIPlayerNorthSouth::HexAIPlayerNorthSouth()
 }
 
 HexAIPlayerNorthSouth::HexAIPlayerNorthSouth(HexBoard& board)
-	: HexPlayer{ TileMarker::O },
+	: HexPlayerNorthSouth{ board },
 	_uf{ WeightedQuickUnionPathCompressionUF{ board.boardSize() * board.boardSize() + NUM_VIRTUAL_TILES } }
 {
 	size_t n{ board.boardSize() };
@@ -126,12 +110,3 @@ MoveResult HexAIPlayerNorthSouth::makeNextMove(HexBoard& board)
 	return placeMarker(board, bestTile);
 }
 
-bool HexAIPlayerNorthSouth::hasWon(HexBoard & board)
-{
-	return _uf.areConnected(board.northSouthWinTiles().first, board.northSouthWinTiles().second);
-}
-
-void HexAIPlayerNorthSouth::color() const
-{
-	cout << "Red Player (O)" << endl;
-}

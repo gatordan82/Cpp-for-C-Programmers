@@ -27,7 +27,7 @@ public:
 	HexPlayerWestEast(HexBoard& board);
 
 	// Destructor
-	~HexPlayerWestEast();
+	virtual ~HexPlayerWestEast();
 
 	// Place a marker on the board, and make all adjacent marker connections
 	MoveResult placeMarker(HexBoard& board, const size_t idx);

@@ -21,7 +21,7 @@ class HexGame
 {
 private:
 	HexBoard _board;
-	HexPlayer _ns;
+	HexPlayerNorthSouth _ns;
 	HexPlayerWestEast _we;
 	bool _blueTurn;
 
