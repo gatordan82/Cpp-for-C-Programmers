@@ -7,7 +7,7 @@
 typedef std::chrono::high_resolution_clock Clock;
 
 const size_t NUM_VIRTUAL_TILES{ 4 };
-const size_t NUM_MC_ITERATIONS{ 100 };
+
 
 using namespace std;
 
