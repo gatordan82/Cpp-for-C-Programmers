@@ -26,7 +26,8 @@ size_t HexAIPlayerWestEast::bestMoveTile(HexBoard& board)
 
 	for (const auto& tile : board.emptyTiles())
 	{
-		if (size_t mcWins = runMCSim(board, tile) > bestNumWins)
+		size_t mcWins = runMCSim(board, tile);
+		if (mcWins > bestNumWins)
 		{
 			bestTile = tile;
 			bestNumWins = mcWins;
@@ -40,13 +41,14 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerWestEast::buildMCIteration(HexBoa
 {
 	std::vector<size_t> emptyTiles{ board.emptyTiles() };
 	std::remove(emptyTiles.begin(), emptyTiles.end(), nextMoveIdx);
+	emptyTiles.erase(emptyTiles.end() - 1, emptyTiles.end());
 	std::random_shuffle(emptyTiles.begin(), emptyTiles.end());
 
 	// Need to fill floor(n^2 - 2 * k) tiles with O, and connect them to the UF structure.
 	// n = board side length, k = current move number
 	size_t endOfHalf{ static_cast<size_t>(floor((emptyTiles.size() - 1) / 2.0)) };
 
-	emptyTiles.erase(emptyTiles.begin() + endOfHalf - 1, emptyTiles.end());
+	emptyTiles.erase(emptyTiles.begin() + endOfHalf, emptyTiles.end());
 
 	WeightedQuickUnionPathCompressionUF sim{ _uf };
 	joinNeighbors(sim, board, nextMoveIdx);
@@ -54,7 +56,8 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerWestEast::buildMCIteration(HexBoa
 	{
 		for (const auto& neighborTile : board.neighbors(tile))
 		{
-			if (board.getMarker(tile) == _mark
+			if (neighborTile == nextMoveIdx
+				|| board.getMarker(neighborTile) == _mark
 				|| find(emptyTiles.begin(), emptyTiles.end(), neighborTile) != emptyTiles.end())
 			{
 				sim.join(neighborTile, tile);
@@ -65,7 +68,7 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerWestEast::buildMCIteration(HexBoa
 	return sim;
 }
 
-size_t HexAIPlayerWestEast::runMCSim(HexBoard & board, size_t nextMoveIdx)
+size_t HexAIPlayerWestEast::runMCSim(HexBoard& board, size_t nextMoveIdx)
 {
 	auto t1 = Clock::now();
 
@@ -75,7 +78,8 @@ size_t HexAIPlayerWestEast::runMCSim(HexBoard & board, size_t nextMoveIdx)
 	for (size_t i{ 0 }; i < NUM_MC_ITERATIONS; i++)
 	{
 		WeightedQuickUnionPathCompressionUF mcUFIteration{ buildMCIteration(board, nextMoveIdx) };
-		if (mcUFIteration.areConnected(n * n, n * n + 3))
+		std::pair<size_t, size_t> winTiles = board.westEastWinTiles();
+		if (mcUFIteration.areConnected(winTiles.first, winTiles.second))
 			numWins++;
 	}
 
@@ -101,8 +105,18 @@ HexAIPlayerWestEast::~HexAIPlayerWestEast()
 {
 }
 
+HexAIPlayerWestEast& HexAIPlayerWestEast::operator=(HexAIPlayerWestEast& player)
+{
+	if (this != &player)
+	{
+		_uf = player._uf;
+	}
 
-MoveResult HexAIPlayerWestEast::placeMarker(HexBoard & board, const size_t idx)
+	return *this;
+}
+
+
+MoveResult HexAIPlayerWestEast::placeMarker(HexBoard& board, const size_t idx)
 {
 	size_t mcIdx = makeNextMove(board);
 

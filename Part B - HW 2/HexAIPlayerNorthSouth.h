@@ -17,10 +17,11 @@ public:
 	// Constructors
 	HexAIPlayerNorthSouth();
 	HexAIPlayerNorthSouth(HexBoard& board);
-	HexAIPlayerNorthSouth(HexPlayerNorthSouth& player);
 
 	// Destructor
 	~HexAIPlayerNorthSouth();
+
+	HexAIPlayerNorthSouth& operator=(HexAIPlayerNorthSouth& player);
 	
 	MoveResult placeMarker(HexBoard& board, const size_t idx);
 

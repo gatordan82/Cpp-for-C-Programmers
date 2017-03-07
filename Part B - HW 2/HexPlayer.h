@@ -37,7 +37,7 @@ public:
 	// Check if the two appropriate edges are connected
 	virtual bool hasWon(HexBoard& board) = 0;
 	// Output the player color to the console
-	virtual void color() const = 0;
+	virtual TileMarker color() const = 0;
 };
 
 

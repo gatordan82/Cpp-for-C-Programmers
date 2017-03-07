@@ -40,6 +40,16 @@ HexPlayerNorthSouth::~HexPlayerNorthSouth()
 {
 }
 
+HexPlayerNorthSouth& HexPlayerNorthSouth::operator=(HexPlayerNorthSouth& player)
+{
+	if (this != &player)
+	{
+		_uf = player._uf;
+	}
+
+	return *this;
+}
+
 MoveResult HexPlayerNorthSouth::placeMarker(HexBoard& board, const size_t idx)
 {
 	switch (board.isValidIndex(idx))
@@ -66,7 +76,7 @@ bool HexPlayerNorthSouth::hasWon(HexBoard& board)
 	return _uf.areConnected(board.northSouthWinTiles().first, board.northSouthWinTiles().second);
 }
 
-void HexPlayerNorthSouth::color() const
+TileMarker HexPlayerNorthSouth::color() const
 {
-	cout << "Red Player (O)" << endl;
+	return TileMarker::O;
 }

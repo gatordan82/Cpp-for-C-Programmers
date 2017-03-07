@@ -40,6 +40,16 @@ HexPlayerWestEast::~HexPlayerWestEast()
 {
 }
 
+HexPlayerWestEast& HexPlayerWestEast::operator=(HexPlayerWestEast& player)
+{
+	if (this != &player)
+	{
+		_uf = player._uf;
+	}
+
+	return *this;
+}
+
 MoveResult HexPlayerWestEast::placeMarker(HexBoard& board, const size_t idx)
 {
 	switch (board.isValidIndex(idx))
@@ -66,7 +76,7 @@ bool HexPlayerWestEast::hasWon(HexBoard& board)
 	return _uf.areConnected(board.westEastWinTiles().first, board.westEastWinTiles().second);
 }
 
-void HexPlayerWestEast::color() const
+TileMarker HexPlayerWestEast::color() const
 {
-	cout << "Blue Player (X)" << endl;
+	return TileMarker::X;
 }

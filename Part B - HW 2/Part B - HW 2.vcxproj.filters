@@ -50,9 +50,6 @@
     <ClCompile Include="HexBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HexGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HexPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

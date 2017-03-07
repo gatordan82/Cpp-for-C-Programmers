@@ -39,7 +39,7 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerNorthSouth::buildMCIteration(HexB
 	// n = board side length, k = current move number
 	size_t endOfHalf{ static_cast<size_t>(floor((emptyTiles.size() - 1) / 2.0)) };
 
-	emptyTiles.erase(emptyTiles.begin() + endOfHalf - 1, emptyTiles.end());
+	emptyTiles.erase(emptyTiles.begin() + endOfHalf, emptyTiles.end());
 
 	WeightedQuickUnionPathCompressionUF sim{ _uf };
 	joinNeighbors(sim, board, nextMoveIdx);
@@ -47,7 +47,8 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerNorthSouth::buildMCIteration(HexB
 	{
 		for (const auto& neighborTile : board.neighbors(tile))
 		{
-			if (board.getMarker(tile) == _mark
+			if (neighborTile == nextMoveIdx
+				|| board.getMarker(neighborTile) == _mark
 				|| find(emptyTiles.begin(), emptyTiles.end(), neighborTile) != emptyTiles.end())
 			{
 				sim.join(neighborTile, tile);
@@ -68,7 +69,8 @@ size_t HexAIPlayerNorthSouth::runMCSim(HexBoard& board, size_t nextMoveIdx)
 	for (size_t i{ 0 }; i < NUM_MC_ITERATIONS; i++)
 	{
 		WeightedQuickUnionPathCompressionUF mcUFIteration{ buildMCIteration(board, nextMoveIdx) };
-		if (mcUFIteration.areConnected(n * n, n * n + 3))
+		std::pair<size_t, size_t> winTiles = board.northSouthWinTiles();
+		if (mcUFIteration.areConnected(winTiles.first, winTiles.second))
 			numWins++;
 	}
 	
@@ -89,13 +91,20 @@ HexAIPlayerNorthSouth::HexAIPlayerNorthSouth(HexBoard& board)
 {
 }
 
-HexAIPlayerNorthSouth::HexAIPlayerNorthSouth(HexPlayerNorthSouth& player)
-{
-}
 
 
 HexAIPlayerNorthSouth::~HexAIPlayerNorthSouth()
 {
+}
+
+HexAIPlayerNorthSouth& HexAIPlayerNorthSouth::operator=(HexAIPlayerNorthSouth& player)
+{
+	if (this != &player)
+	{
+		_uf = player._uf;
+	}
+
+	return *this;
 }
 
 

@@ -17,50 +17,70 @@
 
 using namespace std;
 
-HexGame startGamePrompt()
+size_t queryBoardSize()
 {
 	size_t size{};
 	cout << "What size board do you want to play on?" << endl;
 	cin >> size;
 
+	return size;
+}
+
+
+bool queryUseAI()
+{
 	char useAIYesNo{};
 	cout << "Do you want to play against the computer (Y/N)?" << endl;
 	cin >> useAIYesNo;
 
-	bool useAI{};
 	switch (useAIYesNo)
 	{
 	case 'y': case 'Y':
-		useAI = true;
-		break;
+		return true;
 	case 'n': case 'N':
-		return HexGame{ size };
-	default:
-		cout << "Sorry, I didn't understand your input... use AI (Y/N)?" << endl;
-		break;
+		return false;
 	}
+}
 
-	if (useAI)
-	{
-		size_t humanPlayerNumber{};
-		cout << "Do you want to be Player 1 or 2?" << endl;
-		cin >> humanPlayerNumber;
-		if (humanPlayerNumber == 1)
-			return HexGame{ size, true, 1 };
-		else
-			return HexGame{ size, 2 };
-	}
+size_t getAIPlayerNumber()
+{
 
+	size_t humanPlayerNumber{};
+	cout << "Do you want to be Player 1 or 2?" << endl;
+	cin >> humanPlayerNumber;
+	if (humanPlayerNumber == 1)
+		return 2;
+	else
+		return 1;
 }
 
 int main()
 {
 	srand(time(0));
 
-	size_t size{};
+	size_t size{ queryBoardSize() };
+	bool useAI{ queryUseAI() };
 
-	HexGame newGame{ startGamePrompt() };
-	newGame.startGame();
+	if (useAI)
+	{
+		size_t aiPlayerNumber{ getAIPlayerNumber() };
+		if (aiPlayerNumber == 1)
+		{
+			HexGame<HexPlayerNorthSouth, HexAIPlayerWestEast> newGame{ size, 1 };
+			newGame.startGame();
+		}
+		else
+		{
+			HexGame<HexAIPlayerNorthSouth, HexPlayerWestEast> newGame{ size, 2 };
+			newGame.startGame();
+		}
+	}
+	else
+	{
+		HexGame<HexPlayerNorthSouth, HexPlayerWestEast> newGame{ size };
+		newGame.startGame();
+	}
+
 
 	cin.get();
 	cin.get();
