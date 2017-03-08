@@ -24,6 +24,7 @@ public:
 	// Constructors
 	HexPlayerNorthSouth();
 	HexPlayerNorthSouth(HexBoard& board);
+	HexPlayerNorthSouth(HexPlayerNorthSouth& player);
 
 	// Destructor
 	virtual ~HexPlayerNorthSouth();

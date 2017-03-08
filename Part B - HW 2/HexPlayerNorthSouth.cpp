@@ -36,6 +36,11 @@ HexPlayerNorthSouth::HexPlayerNorthSouth(HexBoard& board)
 	}
 }
 
+HexPlayerNorthSouth::HexPlayerNorthSouth(HexPlayerNorthSouth& player)
+	: _uf{ player._uf }
+{
+}
+
 HexPlayerNorthSouth::~HexPlayerNorthSouth()
 {
 }
