@@ -40,15 +40,7 @@ HexPlayerWestEast::~HexPlayerWestEast()
 {
 }
 
-HexPlayerWestEast& HexPlayerWestEast::operator=(HexPlayerWestEast& player)
-{
-	if (this != &player)
-	{
-		_uf = player._uf;
-	}
 
-	return *this;
-}
 
 MoveResult HexPlayerWestEast::placeMarker(HexBoard& board, const size_t idx)
 {

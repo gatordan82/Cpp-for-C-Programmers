@@ -36,24 +36,13 @@ HexPlayerNorthSouth::HexPlayerNorthSouth(HexBoard& board)
 	}
 }
 
-HexPlayerNorthSouth::HexPlayerNorthSouth(HexPlayerNorthSouth& player)
-	: _uf{ player._uf }
-{
-}
+
 
 HexPlayerNorthSouth::~HexPlayerNorthSouth()
 {
 }
 
-HexPlayerNorthSouth& HexPlayerNorthSouth::operator=(HexPlayerNorthSouth& player)
-{
-	if (this != &player)
-	{
-		_uf = player._uf;
-	}
 
-	return *this;
-}
 
 MoveResult HexPlayerNorthSouth::placeMarker(HexBoard& board, const size_t idx)
 {

@@ -21,10 +21,11 @@ size_t HexAIPlayerWestEast::makeNextMove(HexBoard& board)
 
 size_t HexAIPlayerWestEast::bestMoveTile(HexBoard& board)
 {
-	size_t bestTile{};
+	const auto& emptyTiles{ board.emptyTiles() };
+	size_t bestTile{ emptyTiles[0] };
 	size_t bestNumWins{ 0 };
 
-	for (const auto& tile : board.emptyTiles())
+	for (const auto& tile : emptyTiles)
 	{
 		size_t mcWins = runMCSim(board, tile);
 		if (mcWins > bestNumWins)
@@ -105,15 +106,7 @@ HexAIPlayerWestEast::~HexAIPlayerWestEast()
 {
 }
 
-HexAIPlayerWestEast& HexAIPlayerWestEast::operator=(HexAIPlayerWestEast& player)
-{
-	if (this != &player)
-	{
-		_uf = player._uf;
-	}
 
-	return *this;
-}
 
 
 MoveResult HexAIPlayerWestEast::placeMarker(HexBoard& board, const size_t idx)
@@ -127,7 +120,7 @@ MoveResult HexAIPlayerWestEast::placeMarker(HexBoard& board, const size_t idx)
 		board.placeMarker(TileMarker::X, mcIdx);
 		for (const auto& tile : board.neighbors(mcIdx))
 		{
-			if (board.getMarker(tile) == TileMarker::O)
+			if (board.getMarker(tile) == TileMarker::X)
 				_uf.join(mcIdx, tile);
 		}
 		return MoveResult::LEGAL;

@@ -34,6 +34,7 @@
     <ClCompile Include="HexAIPlayerNorthSouth.cpp" />
     <ClCompile Include="HexAIPlayerWestEast.cpp" />
     <ClCompile Include="HexBoard.cpp" />
+    <ClCompile Include="HexGame.cpp" />
     <ClCompile Include="HexPlayer.cpp" />
     <ClCompile Include="HexPlayerNorthSouth.cpp" />
     <ClCompile Include="HexPlayerWestEast.cpp" />

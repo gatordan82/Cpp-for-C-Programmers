@@ -71,5 +71,8 @@
     <ClCompile Include="HexAIPlayerWestEast.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HexGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

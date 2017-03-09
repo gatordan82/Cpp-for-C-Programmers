@@ -73,6 +73,7 @@ void HexBoard::placeMarker(const TileMarker mark, const size_t idx)
 {
 	_board.setVertexValue(idx, mark);
 	remove(_emptyTiles.begin(), _emptyTiles.end(), idx);
+	_emptyTiles.erase(_emptyTiles.end() - 1, _emptyTiles.end());
 }
 
 TileMarker HexBoard::getMarker(const size_t idx) const

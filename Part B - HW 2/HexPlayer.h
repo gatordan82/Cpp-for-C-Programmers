@@ -19,7 +19,7 @@
 class HexPlayer
 {
 protected:
-	const size_t NUM_MC_ITERATIONS{ 1000 };
+	const size_t NUM_MC_ITERATIONS{ 100 };
 	TileMarker _mark;
 	WeightedQuickUnionPathCompressionUF& joinNeighbors(WeightedQuickUnionPathCompressionUF& uf, HexBoard& board, size_t tile);
 

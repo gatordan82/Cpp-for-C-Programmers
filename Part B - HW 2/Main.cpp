@@ -66,18 +66,18 @@ int main()
 		size_t aiPlayerNumber{ getAIPlayerNumber() };
 		if (aiPlayerNumber == 1)
 		{
-			HexGame<HexPlayerNorthSouth, HexAIPlayerWestEast> newGame{ size, 1 };
+			HexGame newGame{ size, 1 };
 			newGame.startGame();
 		}
 		else
 		{
-			HexGame<HexAIPlayerNorthSouth, HexPlayerWestEast> newGame{ size, 2 };
+			HexGame newGame{ size, 2 };
 			newGame.startGame();
 		}
 	}
 	else
 	{
-		HexGame<HexPlayerNorthSouth, HexPlayerWestEast> newGame{ size };
+		HexGame newGame{ size };
 		newGame.startGame();
 	}
 

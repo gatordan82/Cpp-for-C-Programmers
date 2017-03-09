@@ -29,8 +29,6 @@ public:
 	// Destructor
 	virtual ~HexPlayerWestEast();
 
-	HexPlayerWestEast& operator=(HexPlayerWestEast& player);
-
 	// Place a marker on the board, and make all adjacent marker connections
 	virtual MoveResult placeMarker(HexBoard& board, const size_t idx);
 	// Check if the two appropriate edges are connected

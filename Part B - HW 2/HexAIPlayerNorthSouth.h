@@ -20,8 +20,6 @@ public:
 
 	// Destructor
 	~HexAIPlayerNorthSouth();
-
-	HexAIPlayerNorthSouth& operator=(HexAIPlayerNorthSouth& player);
 	
 	MoveResult placeMarker(HexBoard& board, const size_t idx);
 

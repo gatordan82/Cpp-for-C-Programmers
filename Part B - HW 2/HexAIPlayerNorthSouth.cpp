@@ -14,10 +14,11 @@ using namespace std;
 
 size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 {
-	size_t bestTile{};
+	const auto& emptyTiles{ board.emptyTiles() };
+	size_t bestTile{emptyTiles[0]};
 	size_t bestNumWins{ 0 };
 
-	for (const auto& tile : board.emptyTiles())
+	for (const auto& tile : emptyTiles)
 	{
 		if (size_t mcWins = runMCSim(board, tile) > bestNumWins)
 		{
@@ -97,15 +98,7 @@ HexAIPlayerNorthSouth::~HexAIPlayerNorthSouth()
 {
 }
 
-HexAIPlayerNorthSouth& HexAIPlayerNorthSouth::operator=(HexAIPlayerNorthSouth& player)
-{
-	if (this != &player)
-	{
-		_uf = player._uf;
-	}
 
-	return *this;
-}
 
 
 MoveResult HexAIPlayerNorthSouth::placeMarker(HexBoard& board, const size_t idx)

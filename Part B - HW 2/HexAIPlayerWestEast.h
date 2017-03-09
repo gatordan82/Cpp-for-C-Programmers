@@ -20,8 +20,6 @@ public:
 	// Destructor
 	~HexAIPlayerWestEast();
 
-	HexAIPlayerWestEast& operator=(HexAIPlayerWestEast& player);
-
 	// Place a marker on the board, and make all adjacent marker connections
 
 	MoveResult placeMarker(HexBoard& board, const size_t idx);
