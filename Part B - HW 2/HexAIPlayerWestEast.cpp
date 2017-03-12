@@ -75,7 +75,6 @@ size_t HexAIPlayerWestEast::runMCSim(HexBoard& board, size_t nextMoveIdx)
 
 	size_t numWins{ 0 };
 
-	size_t n{ board.boardSize() };
 	for (size_t i{ 0 }; i < NUM_MC_ITERATIONS; i++)
 	{
 		WeightedQuickUnionPathCompressionUF mcUFIteration{ buildMCIteration(board, nextMoveIdx) };

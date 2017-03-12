@@ -20,7 +20,8 @@ size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 
 	for (const auto& tile : emptyTiles)
 	{
-		if (size_t mcWins = runMCSim(board, tile) > bestNumWins)
+		size_t mcWins = runMCSim(board, tile);
+		if (mcWins > bestNumWins)
 		{
 			bestTile = tile;
 			bestNumWins = mcWins;
@@ -66,7 +67,6 @@ size_t HexAIPlayerNorthSouth::runMCSim(HexBoard& board, size_t nextMoveIdx)
 
 	size_t numWins{ 0 };
 
-	size_t n{ board.boardSize() };
 	for (size_t i{ 0 }; i < NUM_MC_ITERATIONS; i++)
 	{
 		WeightedQuickUnionPathCompressionUF mcUFIteration{ buildMCIteration(board, nextMoveIdx) };
