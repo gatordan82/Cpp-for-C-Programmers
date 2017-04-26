@@ -22,8 +22,9 @@ enum class MoveResult : char { OCCUPIED, OUT_OF_BOUNDS, LEGAL };
 
 class HexBoard
 {
-private:
+public:
 	DenseUndirectedGraph<TileMarker, size_t> _board;
+private:
 	size_t _boardSize;
 	std::vector<size_t> _emptyTiles;
 

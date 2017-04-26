@@ -24,7 +24,7 @@ HexBoard::HexBoard()
 }
 
 HexBoard::HexBoard(const size_t n)
-	: _board{ DenseUndirectedGraph<TileMarker, size_t>{n * n + NUM_VIRTUAL_TILES, } },
+	: _board{ DenseUndirectedGraph<TileMarker, size_t>{n * n + NUM_VIRTUAL_TILES} },
 	_boardSize{ n },
 	_emptyTiles{ std::vector<size_t>(n * n, 0) }
 {
@@ -39,7 +39,7 @@ HexBoard::HexBoard(const size_t n)
 			// connect down-right neighbor
 			_board.addEdge(i, i + n, 1);
 			// connect down-left neighbor
-			if (i && n != 0)
+			if (i % n != 0)
 				_board.addEdge(i, i + n - 1, 1);
 		}
 	}

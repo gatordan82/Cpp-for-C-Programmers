@@ -12,6 +12,8 @@ private:
 	size_t runMCSim(HexBoard& board, size_t nextMoveIdx);
 	size_t makeNextMove(HexBoard& board);
 
+	void drawMCBoard(HexBoard& board, std::vector<size_t>& emptyTiles, size_t nextMoveIdx);
+
 
 public:
 	// Constructors
