@@ -22,7 +22,7 @@ size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 	{
 		size_t mcWins = runMCSim(board, tile);
 
-		cout << "Tile " << tile << " had " << mcWins << " wins out of " << NUM_MC_ITERATIONS << " simulations." << endl;
+		//cout << "Tile " << tile << " had " << mcWins << " wins out of " << NUM_MC_ITERATIONS << " simulations." << endl;
 
 		if (mcWins > bestNumWins)
 		{

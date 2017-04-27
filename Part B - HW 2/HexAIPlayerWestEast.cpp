@@ -84,8 +84,8 @@ size_t HexAIPlayerWestEast::runMCSim(HexBoard& board, size_t nextMoveIdx)
 	}
 
 	auto t2 = Clock::now();
-	cout << "Time to run " << NUM_MC_ITERATIONS << " Monte Carlo Simulations is "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << " ms." << endl;
+	//cout << "Time to run " << NUM_MC_ITERATIONS << " Monte Carlo Simulations is "
+	//	<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << " ms." << endl;
 
 	return numWins;
 }
