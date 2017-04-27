@@ -16,10 +16,11 @@
 #include "HexBoard.h"
 #include "WeightedQuickUnionPathCompressionUF.h"
 
+const size_t NUM_MC_ITERATIONS{ 1000 };
+
 class HexPlayer
 {
 protected:
-	const size_t NUM_MC_ITERATIONS{ 1000 };
 	TileMarker _mark;
 	WeightedQuickUnionPathCompressionUF& joinNeighbors(WeightedQuickUnionPathCompressionUF& uf, HexBoard& board, size_t tile);
 

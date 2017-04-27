@@ -21,6 +21,9 @@ size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 	for (const auto& tile : emptyTiles)
 	{
 		size_t mcWins = runMCSim(board, tile);
+
+		cout << "Tile " << tile << " had " << mcWins << " wins out of " << NUM_MC_ITERATIONS << " simulations." << endl;
+
 		if (mcWins > bestNumWins)
 		{
 			bestTile = tile;
@@ -35,6 +38,7 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerNorthSouth::buildMCIteration(HexB
 {
 	std::vector<size_t> emptyTiles{ board.emptyTiles() };
 	std::remove(emptyTiles.begin(), emptyTiles.end(), nextMoveIdx);
+	emptyTiles.erase(emptyTiles.end() - 1, emptyTiles.end());
 	std::random_shuffle(emptyTiles.begin(), emptyTiles.end());
 
 	// Need to fill floor(n^2 - 2 * k) tiles with O, and connect them to the UF structure.
@@ -76,8 +80,8 @@ size_t HexAIPlayerNorthSouth::runMCSim(HexBoard& board, size_t nextMoveIdx)
 	}
 	
 	auto t2 = Clock::now();
-	cout << "Time to run " << NUM_MC_ITERATIONS << " Monte Carlo Simulations is "
-		<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << " ms." << endl;
+	//cout << "Time to run " << NUM_MC_ITERATIONS << " Monte Carlo Simulations is "
+	//	<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << " ms." << endl;
 
 	return numWins;
 }

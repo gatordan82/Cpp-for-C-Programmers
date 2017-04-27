@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Other Student%27s Projects\test.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B3C7EB83-4A92-45F0-8CB7-E1BC5059CD42}</ProjectGuid>
     <RootNamespace>OtherStudentsProjects</RootNamespace>
