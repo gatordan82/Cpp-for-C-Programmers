@@ -18,7 +18,7 @@ WeightedQuickUnionPathCompressionUF& HexPlayer::joinNeighbors(WeightedQuickUnion
 {
 	for (const auto& neighborTile : board.neighbors(tile))
 	{
-		if (board.getMarker(tile) == _mark)
+		if (board.getMarker(neighborTile) == _mark)
 			uf.join(neighborTile, tile);
 	}
 

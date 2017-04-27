@@ -8,7 +8,7 @@ int main()
 {
 
 	size_t emptyTiles{ 6 };
-	size_t emptyTiles2{ 5 };
+	size_t emptyTiles2{ 4 };
 
 	size_t result = emptyTiles >> 1;
 	size_t result2 = emptyTiles2 >> 1;
