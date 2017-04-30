@@ -1,21 +1,23 @@
 // HexGame.cpp
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Sets up a game of hex, with a board of size to be input 
 // as a constructor.  Defines the two players (N/S & W/E), and 
-// toggles turns back and forth between the two players.
+// toggles turns back and forth between the two players.  Players
+// are either human or AI players, using polymorphism.  The type
+// of player is selected at run time, by using a smart pointer
+// to the base class HexPlayer.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #include "HexGame.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
-
 
 size_t HexGame::coordsToIndex(size_t i, size_t j)
 {
@@ -28,7 +30,6 @@ size_t HexGame::coordsToIndex(size_t i, size_t j)
 
 	return j * _board.boardSize() + i;
 }
-
 
 
 HexGame::HexGame(size_t size)
@@ -74,7 +75,6 @@ HexGame::~HexGame()
 }
 
 
-
 void HexGame::startGame()
 {
 	std::cout << "\nAre you ready to start (Y/N)?" << endl;
@@ -109,7 +109,6 @@ void HexGame::startGame()
 }
 
 
-
 bool HexGame::takeTurn(std::unique_ptr<HexPlayer>& player)
 {
 	if (_aiPlayer == AIPlayerNumber::NONE 
@@ -119,7 +118,6 @@ bool HexGame::takeTurn(std::unique_ptr<HexPlayer>& player)
 	else
 		return takeAITurn(player);
 }
-
 
 
 bool HexGame::takeHumanTurn(std::unique_ptr<HexPlayer>& player)

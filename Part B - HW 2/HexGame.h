@@ -1,14 +1,17 @@
 // HexGame.h
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Sets up a game of hex, with a board of size to be input 
 // as a constructor.  Defines the two players (N/S & W/E), and 
-// toggles turns back and forth between the two players.
+// toggles turns back and forth between the two players.  Players
+// are either human or AI players, using polymorphism.  The type
+// of player is selected at run time, by using a smart pointer
+// to the base class HexPlayer.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #ifndef _HEX_GAME_H
 #define _HEX_GAME_H

@@ -1,13 +1,13 @@
 // Main.cpp
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Entry point for starting a game of Hex.  Asks the user what size board
-// you want to play on, and then starts the game.
+// you want to play on, if you want a computer player, and then starts the game.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #include <iostream>
 #include "DenseUndirectedGraph.h"

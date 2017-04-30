@@ -1,14 +1,16 @@
 // HexPlayer.cpp
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Base Hex player class.  Stores the marker type, and has
 // pure virtual functions for identification, marker placement,
-// and checking whether or not the player has won.
+// and checking whether or not the player has won.  Adds an
+// implementation specific joinNeighbors() method for making
+// connections in a Union-Find data structure.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #include "HexPlayer.h"
 

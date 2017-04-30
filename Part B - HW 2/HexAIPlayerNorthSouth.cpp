@@ -1,16 +1,25 @@
+// HexAIPlayerNorthSouth.cpp
+//
+// C++ for C Programmers, Part B
+// Homework 5: Implement Monte Carlo Hex move evaluation
+// 
+// An Artificial Intelligence computer player for North-to-South.  
+// This implementation uses Monte Carlo simulations, which randomly
+// populate the remaining empty tiles with the appropriate number of
+// markers of each type.  The next move is selected by which of the 
+// open tiles produces the most simulated wins out of the total number
+// of MC simulations ran for that tile.
+//
+// Daniel K. Benjamin
+// 4/30/2017
+
 #include "HexAIPlayerNorthSouth.h"
 #include <algorithm>
 #include <cmath>
 #include <chrono>
 #include <iostream>
 
-typedef std::chrono::high_resolution_clock Clock;
-
-const size_t NUM_VIRTUAL_TILES{ 4 };
-
-
 using namespace std;
-
 
 size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 {
@@ -21,8 +30,6 @@ size_t HexAIPlayerNorthSouth::bestMoveTile(HexBoard& board)
 	for (const auto& tile : emptyTiles)
 	{
 		size_t mcWins = runMCSim(board, tile);
-
-		//cout << "Tile " << tile << " had " << mcWins << " wins out of " << NUM_MC_ITERATIONS << " simulations." << endl;
 
 		if (mcWins > bestNumWins)
 		{
@@ -67,8 +74,6 @@ WeightedQuickUnionPathCompressionUF HexAIPlayerNorthSouth::buildMCIteration(HexB
 
 size_t HexAIPlayerNorthSouth::runMCSim(HexBoard& board, size_t nextMoveIdx)
 {
-	auto t1 = Clock::now();
-
 	size_t numWins{ 0 };
 
 	for (size_t i{ 0 }; i < NUM_MC_ITERATIONS; i++)
@@ -78,10 +83,6 @@ size_t HexAIPlayerNorthSouth::runMCSim(HexBoard& board, size_t nextMoveIdx)
 		if (mcUFIteration.areConnected(winTiles.first, winTiles.second))
 			numWins++;
 	}
-	
-	auto t2 = Clock::now();
-	//cout << "Time to run " << NUM_MC_ITERATIONS << " Monte Carlo Simulations is "
-	//	<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << " ms." << endl;
 
 	return numWins;
 }

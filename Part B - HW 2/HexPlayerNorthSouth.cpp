@@ -1,20 +1,18 @@
 // HexPlayerNorthSouth.cpp
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Hex player that wins by connecting the top and bottom edges.
 // Connections are stored by an efficient disjoint-set structure.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #include "HexPlayerNorthSouth.h"
 #include <iostream>
 
 using namespace std;
-
-const size_t NUM_VIRTUAL_TILES{ 4 };
 
 HexPlayerNorthSouth::HexPlayerNorthSouth()
 	: HexPlayerNorthSouth{ HexBoard{} }

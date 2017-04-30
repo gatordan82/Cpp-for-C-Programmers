@@ -1,22 +1,20 @@
 // HexBoard.cpp
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Hex board representation.  Allows marker placement, and to draw
 // an ASCII representation of the board to the console.  Tiles are 
 // stored in a DenseUndirectedGraph.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #include "HexBoard.h"
 #include <iostream>
 #include <algorithm>
 
 using namespace std;
-
-const size_t NUM_VIRTUAL_TILES{ 4 };
 
 HexBoard::HexBoard()
 	: HexBoard{ 2 }

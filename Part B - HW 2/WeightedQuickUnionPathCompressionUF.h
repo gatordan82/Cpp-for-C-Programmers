@@ -1,14 +1,14 @@
 // WeightedQuickUnionPathCompressionUF.h
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Disjoint set data structure.  Uses weighting to determine
 // which branch of two trees in the forest to merge to.  Uses
 // path compression to keep each tree flat to within lg*N.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #ifndef _WEIGHTED_QUICK_UNION_PATH_COMPRESSION_UF_H
 #define _WEIGHTED_QUICK_UNION_PATH_COMPRESSION_UF_H
@@ -18,9 +18,9 @@
 class WeightedQuickUnionPathCompressionUF
 {
 private:
-	std::vector<size_t> _parent;
-	std::vector<size_t> _size;
-	size_t _count;
+	std::vector<size_t> _parent;	// parent node for connected components
+	std::vector<size_t> _size;		// number of elements with a given parent node
+	size_t _count;					// number of connected components
 
 	// Check if an index is in the data structure
 	void validate(size_t p) const;

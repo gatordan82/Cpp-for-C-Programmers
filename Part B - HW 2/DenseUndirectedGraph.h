@@ -1,7 +1,7 @@
 // DenseUndirectedGraph.h
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // A templated dense undirected graph.  This uses an adjacency matrix for quick 
 // storage and lookup of the edge values.  Vertex values are stored as well, but
@@ -9,7 +9,7 @@
 // allowed in this representation.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 
 #ifndef _DENSE_UNDIRECTED_GRAPH_H

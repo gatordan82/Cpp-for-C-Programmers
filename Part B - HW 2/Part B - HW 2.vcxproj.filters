@@ -18,9 +18,6 @@
     <ClInclude Include="DenseUndirectedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DijkstraUndirectedShortestPath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HexBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>

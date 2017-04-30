@@ -1,13 +1,13 @@
 // HexPlayerWestEast.h
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Hex player that wins by connecting the left and right edges.
 // Connections are stored by an efficient disjoint-set structure.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #ifndef _HEX_PLAYER_WEST_EAST_H
 #define _HEX_PLAYER_WEST_EAST_H

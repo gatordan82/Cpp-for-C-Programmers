@@ -1,14 +1,16 @@
 // HexPlayer.h
 //
 // C++ for C Programmers, Part B
-// Homework 1: Implement Hex Board
+// Homework 5: Implement Monte Carlo Hex move evaluation
 // 
 // Base Hex player class.  Stores the marker type, and has
 // pure virtual functions for identification, marker placement,
-// and checking whether or not the player has won.
+// and checking whether or not the player has won.  Adds an
+// implementation specific joinNeighbors() method for making
+// connections in a Union-Find data structure.
 //
 // Daniel K. Benjamin
-// 2/19/2017
+// 4/30/2017
 
 #ifndef _HEX_PLAYER_H
 #define _HEX_PLAYER_H
@@ -21,7 +23,9 @@ const size_t NUM_MC_ITERATIONS{ 1000 };
 class HexPlayer
 {
 protected:
-	TileMarker _mark;
+	TileMarker _mark;	// tile marker type
+	
+	// Joins all adjacent tiles of the same marker type in the UF structure
 	WeightedQuickUnionPathCompressionUF& joinNeighbors(WeightedQuickUnionPathCompressionUF& uf, HexBoard& board, size_t tile);
 
 public:
